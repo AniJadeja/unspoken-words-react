@@ -1,13 +1,51 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: 'reef';
+  src: url('./fonts/reef.otf');
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+*{
+    --color-primary-black : #1b1b1b;
+    --color-primary-white : #ebebeb;
+    --color-primary-gray : #939393;
+
+    --color-secondary-gray : #b9b9b9;
+    
+  }
+
+
+  
+  body{
+    background-color: var(--color-primary-black);
+  }
+
+  @layer components {
+    .align-center {
+      @apply flex 
+             items-center 
+             justify-center;
+    }
+
+    .nav-item{
+      @apply mx-4 
+             text-xl 
+             font-reef 
+             tracking-[4px]
+             inline-block
+             text-[var(--color-primary-gray)]
+             transition ease-in-out delay-100
+    }
+
+    .nav-item:hover{
+      @apply text-[var(--color-secondary-gray)]
+    }
+
+    .activated{
+      @apply text-[var(--color-primary-white)]
+             transition ease-in-out delay-100
+    }
+  }
