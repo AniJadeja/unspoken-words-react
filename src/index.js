@@ -10,9 +10,13 @@ import Avocations from './Pages/Avocations';
 import Projects from './Pages/Projects';
 import NoPage from './Pages/NoPage';
 import Home from "./Pages/Home";
-import NavigationBar from "./Components/NavigationBar";
+import NavigationBar from "./Components/NavigationBar/NavigationBar";
 import ReactDOM from 'react-dom/client';
 import Resume from './Pages/Resume'
+
+
+export const projectName = "Unspoken Words";
+
 
 let navEntries = [{ path: "/", element: <Home /> },
 { path: "/aboutme", element: <AboutMe /> },

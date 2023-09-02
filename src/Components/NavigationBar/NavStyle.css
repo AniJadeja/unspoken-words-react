@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+
+    .nav-header{
+     @apply font-reef
+            tracking-[4px] 
+            text-[var(--color-primary-gray)] 
+            transition ease-in-out delay-100
+    }
+  
+    .align-center {
+      @apply flex 
+             items-center 
+             justify-center
+           
+    }
+  
+    .nav-item {
+      @apply mx-4 
+             text-xl 
+             inline-block 
+      
+       
+            
+    }
+  
+    /*nav-item-mobile:hover is part of mobile navigation css*/
+    .nav-item:hover, .nav-item-mobile:hover {
+      @apply text-[var(--color-secondary-gray)]
+    }
+  
+    .activated {
+      @apply text-[var(--color-primary-white)] 
+             transition ease-in-out delay-100
+    }
+  
+    /* Mobile navigation bar css
+  
+    .align-mobile {
+      @apply block 
+             my-16
+             w-fit
+             fixed
+             bottom-10
+            
+    }*/
+    
+    .align-mobile {
+      @apply flex
+             max-w-full
+             fixed
+             bottom-11
+             
+             /* right-[-84%]
+             md:right-[-92%]
+             md700:right-[-80%]
+             md750:right-[-72%]
+             sm350:right-[-88%]
+             sm500:right-[-91%] */
+                
+    }
+  
+    .nav-item-mobile{
+      @apply  flex
+              text-xl
+              mx-2
+              my-[10px]
+              min-w-fit
+              
+    }
+  }
+  

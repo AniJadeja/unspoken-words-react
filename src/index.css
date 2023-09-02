@@ -8,44 +8,47 @@
   src: url('./fonts/reef.otf');
 }
 
-*{
-    --color-primary-black : #1b1b1b;
-    --color-primary-white : #ebebeb;
-    --color-primary-gray : #939393;
+* {
+  --color-primary-black: #1b1b1b;
+  --color-primary-white: #ebebeb;
+  --color-primary-gray: #939393;
 
-    --color-secondary-gray : #b9b9b9;
-    
-  }
+  --color-secondary-gray: #b9b9b9;
+  --color-menu-gray : #5e5e5e;
+
+}
 
 
-  
-  body{
-    background-color: var(--color-primary-black);
-  }
 
-  @layer components {
-    .align-center {
-      @apply flex 
-             items-center 
-             justify-center;
+body {
+  background-color: var(--color-primary-black);
+}
+
+@layer utilities {
+  @variants responsive {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
     }
 
-    .nav-item{
-      @apply mx-4 
-             text-xl 
-             font-reef 
-             tracking-[4px]
-             inline-block
-             text-[var(--color-primary-gray)]
-             transition ease-in-out delay-100
-    }
-
-    .nav-item:hover{
-      @apply text-[var(--color-secondary-gray)]
-    }
-
-    .activated{
-      @apply text-[var(--color-primary-white)]
-             transition ease-in-out delay-100
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
     }
   }
+}
+
+
+/*If device width is greater than 600px or equal to */
+@media only screen and (min-width: 600px)  {
+}
+
+/*If device width is less than 600px or equal to */
+@media only screen and (max-width: 600px)  {
+ 
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
