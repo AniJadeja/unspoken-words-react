@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         reef: ['reef', 'sans'],
+        inter:['Inter','sans-serif']
         // 'CustomFont' is the name you assigned in the @font-face declaration
         // 'sans' is the fallback font stack
       },
@@ -28,6 +29,8 @@ module.exports = {
         // => @media (min-width: 1536px) { ... }
         'sm350': '350px',
         // => @media (min-width: 350px) { ... }
+        'sm450': '450px',
+        // => @media (min-width: 350px) { ... }
         'sm500': '500px',
         // => @media (min-width: 500px) { ... }
        
@@ -36,6 +39,8 @@ module.exports = {
        
         'md750': '750px',
         // => @media (min-width: 750px) { ... }
+        'lg900': '900px',
+        // => @media (min-width: 768px) { ... }
       }
     },
   },

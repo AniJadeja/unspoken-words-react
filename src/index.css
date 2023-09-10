@@ -8,13 +8,15 @@
   src: url('./fonts/reef.otf');
 }
 
+
 * {
   --color-primary-black: #1b1b1b;
   --color-primary-white: #ebebeb;
   --color-primary-gray: #939393;
 
   --color-secondary-gray: #b9b9b9;
-  --color-menu-gray : #5e5e5e;
+  --color-menu-gray : #2e2e2e;
+  --color-gradient-black : rgba(27,27,27,0.3);
 
 }
 

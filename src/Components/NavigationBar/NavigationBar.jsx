@@ -3,33 +3,29 @@ import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import Logo from '../../Assets/logo.svg'
 import { projectName } from "../../index";
-import { CgMenuRightAlt, CgClose } from "react-icons/cg"
 import { BurgerClose }
   from "react-burger-icons";
 import './NavStyle.css';
 
 const NavigationBar = () => {
 
-  const [click, setClick] = useState(true);
-
-  const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
-
-  let windowWidth = window.innerWidth;
-
 
   const [isClosed, setIsClosed] = useState(false);
+  const closeMobileMenu = () => setIsClosed(false); 
 
   return (
-    <>
-      <nav id="desktopNavigation" className="mt-12">
+    <section id="middleNavigationBar">
+      <nav id="desktopNavigation" className="mt-12 mb-12">
         <div className="nav-header align-center">
-          <Link to="/" className="flex" onClick={closeMobileMenu}>
+          <Link to="/" className="flex" onClick={
+            //closes the menu when clicked on the logo
+            closeMobileMenu}>
             <img src={Logo} className="block h-[41px] w-auto mr-[20px]" />
             {/*tailwind is built using mobile first approach. So on mobile devices i need to show the project names, but anything above lg breakpoint, i do need my app name to be visible.*/}
             <p className="text-xl lg:hidden ease-in-out duration-300 align-center text-white">{projectName}</p>
           </Link>
-
+          
+          {/* Normally the menu is hidden. But will be visible after lg breakpoint. Only the entries are hidden and not the navbar. The logo and projectName is still visible.  */}
           <ul className="hidden lg:block ease-in-out duration-300">
             <li className="nav-item">
               <NavLink
@@ -71,9 +67,7 @@ const NavigationBar = () => {
               >Resume</NavLink>
             </li>
           </ul>
-          {/* <div className="align-center" onClick={handleClick}>
-              {click ? <FaTimes /> : <FaBars />}
-            </div> */}
+          
         </div>
       </nav>
 
@@ -81,10 +75,10 @@ const NavigationBar = () => {
 
 
 
-      <nav id="mobileNavigation" className=" mx-8 flex md:hidden  justify-center">
+      <nav id="mobileNavigation" className=" mx-8 flex lg:hidden  justify-center">
         {/*Menu Control Button*/}
 
-        <div className="fixed right-0 bottom-11 h-12 w-12 bg-[var(--color-menu-gray)] rounded-s-xl z-50">
+        <div className="fixed right-0 bottom-11 h-12 w-12 bg-[var(--color-menu-gray)] rounded-s-xl z-20">
           <div className="flex justify-center items-center h-full " onClick={() => {
             setIsClosed(!isClosed)
             console.log(isClosed)
@@ -95,7 +89,10 @@ const NavigationBar = () => {
 
         {/*Bottom Navigation Menu*/}
 
-        <div className={"nav-header align-mobile bg-[var(--color-menu-gray)] rounded-s-full z-0 transition-transform transform " + (!isClosed ? "translate-x-full" : "translate-x-10")}>
+        <div className={"nav-header align-mobile bg-[var(--color-menu-gray)] rounded-s-full z-10 transition-transform transform md:-mr-16 " + (!isClosed ? "translate-x-full" : "translate-x-10")
+        /* The translate property moves the navbar from offscreen to onscreen and again to offscreen. */
+      
+      }>
           
             <ul className="flex first:ml-4 last:mr-20 overflow-x-auto">
               <li className="nav-item-mobile align-center">
@@ -138,15 +135,12 @@ const NavigationBar = () => {
                 >Resume</NavLink>
               </li>
             </ul>
-            {/* <div className="align-center" onClick={handleClick}>
-              {click ? <FaTimes /> : <FaBars />}
-            </div> */}
           </div>
   
       </nav>
 
 
-    </>
+    </section>
   );
 };
 

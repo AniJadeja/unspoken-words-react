@@ -37,36 +37,19 @@
       @apply text-[var(--color-primary-white)] 
              transition ease-in-out delay-100
     }
-  
-    /* Mobile navigation bar css
-  
-    .align-mobile {
-      @apply block 
-             my-16
-             w-fit
-             fixed
-             bottom-10
-            
-    }*/
+
     
     .align-mobile {
       @apply flex
              max-w-full
              fixed
              bottom-11
-             
-             /* right-[-84%]
-             md:right-[-92%]
-             md700:right-[-80%]
-             md750:right-[-72%]
-             sm350:right-[-88%]
-             sm500:right-[-91%] */
                 
     }
   
     .nav-item-mobile{
       @apply  flex
-              text-xl
+              text-lg
               mx-2
               my-[10px]
               min-w-fit
