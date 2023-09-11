@@ -4,6 +4,7 @@ import DottedDiv from '../Components/DottedDiv/DottedDiv';
 
 import displayPicture from '../Assets/displayPicture.png'
 import ButtonPrimary from '../Components/ButtonPrimary/ButtonPrimary';
+import AnimatedPage from '../Components/Animated/AnimatedPage';
 
 
 const Home = () => {
@@ -56,6 +57,7 @@ const Home = () => {
   }, []);
 
   return (
+    <AnimatedPage>
     <section style={{ minHeight: sectionHeight }}>
       {/* Article */}
       <article
@@ -99,6 +101,7 @@ const Home = () => {
         <p className='font-reef text-[var(--color-primary-gray)] hidden lg:align-center tracking-[4px] text-sm lg:text-lg xl:text-xl'>Built from scratch by me .{")"}</p>
       </footer>
     </section>
+    </AnimatedPage>
   );
 };
 
