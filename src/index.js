@@ -24,6 +24,18 @@ export const projectName = "Unspoken Words";
 export const availableWidth = window.innerWidth;
 export const availableHeight = window.innerHeight;
 
+
+
+export const getAvailableWidth = () =>{
+  console.log("returning  ", window.innerWidth, " as available width..");
+  return window.innerWidth;
+}
+
+
+export const getAvailableHeight = () =>{
+  return window.innerHeight;
+}
+
 // Define an array of navigation entries with their corresponding paths and components
 let navEntries = [
   { path: "/", element: <Home /> },         // Home page

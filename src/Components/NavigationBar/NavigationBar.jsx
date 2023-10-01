@@ -15,7 +15,7 @@ const NavigationBar = () => {
 
   return (
     <section id="middleNavigationBar">
-      <nav id="desktopNavigation" className="mt-12 mb-12">
+      <nav id="desktopNavigation" className="mt-10 mb-6">
         <div className="nav-header align-center">
           <Link to="/" className="flex" onClick={
             //closes the menu when clicked on the logo
