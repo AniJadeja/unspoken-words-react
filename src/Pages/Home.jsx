@@ -6,6 +6,7 @@ import displayPicture from '../Assets/displayPicture.png'
 import ButtonPrimary from '../Components/ButtonPrimary/ButtonPrimary';
 import AnimatedPage from '../Components/Animated/AnimatedPage';
 import Typed from 'react-typed';
+import Footer from '../Components/Footer/Footer';
 
 
 const Home = () => {
@@ -72,10 +73,12 @@ const Home = () => {
 
   return (
     <AnimatedPage>
-      <section id='homePage' style={{ minHeight: sectionHeight }}>
+      <section id='homePage' style={{ minHeight: sectionHeight}}>
+      <p className='w-2 fixed lg:hidden bottom-32 right-3.5 opacity-60 text-center text-xs text-[var(--color-primary-white)]'> H o m e</p>
         {/* Article */}
         <article
           id='article'  
+          className='pt-14'
           style={{ minHeight: articleHeight }}>
           {/* Left and Right Article Divs */}
           <div className={(avialableWidth.current < 768) ? 'mx-5 grid grid-cols-1 gap-4' : 'grid grid-cols-2 gap-4 mx-5'}>
@@ -103,18 +106,12 @@ const Home = () => {
                   </p>
                 <DottedDiv className="align-center" height={130} width={dottedDivisionWidth } />
               
-                <ButtonPrimary text="Know Me More" path="aboutme" />
+                <ButtonPrimary text="Know Me More" path="aboutme" variant="textBordered" border={false}/>
               </div>
             </div>
           </div>
         </article>
-
-        {/* Footer */}
-        <footer id='footer' className='absolute bottom-0 w-full grid lg:grid-cols-2 h-16' >
-        <p className='mx-auto font-reef text-[var(--color-primary-gray)] align-center tracking-[4px] text-sm lg:text-lg xl:text-xl'>Project : {projectName}</p>
-          <p className='mx-auto font-reef text-[var(--color-primary-gray)] hidden lg:align-center tracking-[4px] text-sm lg:text-lg xl:text-xl'>Built from scratch by me .{")"}</p>
-
-        </footer>
+        <Footer home={true}/>
       </section>
     </AnimatedPage>
   );

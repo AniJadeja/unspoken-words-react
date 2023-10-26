@@ -1,61 +1,376 @@
 import React, { useEffect, useState } from 'react'
 import AnimatedPage from '../Components/Animated/AnimatedPage'
 import DottedDiv from '../Components/DottedDiv/DottedDiv';
+import ButtonPrimary from '../Components/ButtonPrimary/ButtonPrimary';
 import { availableWidth } from '..';
+import androidLogo from '../Assets/android.gif'
+import webDevLogo from '../Assets/web_dev.gif'
+import uiUxLogo from '../Assets/ui_ux.gif'
+import otherTechLogo from '../Assets/other_technologies.gif'
+import personalLogo from '../Assets/personal.gif'
+import professionalLogo from '../Assets/professional.gif'
+import '../index.css'
+import Footer from '../Components/Footer/Footer';
 
 const AboutMe = () => {
 
   const introTextArticle = document.getElementById('introTextArticle');
-  
-  const [dottedDivWidth,setDottedDivWidth] = useState(250);
-  const [dottedDivHeight,setDottedDivHeight] = useState(100);
 
-  
- 
+  const [dottedDivWidth, setDottedDivWidth] = useState(250);
+  const [dottedDivHeight, setDottedDivHeight] = useState(100);
 
-  useEffect(()=>{
+
+
+
+  useEffect(() => {
     const introText = document.getElementById('introText');
     console.log("use Effect ran");
-    if(introText)
-    {
-      if(availableWidth>768)
-      {
-        setDottedDivWidth((introText.clientWidth)-70);
+    if (introText) {
+      if (availableWidth > 768) {
+        setDottedDivWidth((introText.clientWidth) );
         setDottedDivHeight(introText.clientHeight);
       }
-      else{
+      else {
         setDottedDivWidth(introText.clientWidth);
-        
+
       }
-      
+
       console.log("\nintroTextHeight : " + introText.clientHeight)
       //console.log("introTextWidth : " +introText.clientWidth)
 
-    
 
-      console.log("calculated dottedDivHeight : " + dottedDivHeight)
-     // console.log("calculated dottedDivWidth : " + dottedDivWidth)
-      
+
+      console.log("calculated dottedDivWidth : " + introText.clientWidth)
+      // console.log("calculated dottedDivWidth : " + dottedDivWidth)
+
     }
-    else{
+    else {
       console.log("introText is unavailable")
     }
   })
-  
+
   return (
     <AnimatedPage>
       <section id='aboutMePage' className='text-[var(--color-primary-white)]  px-10 lg:px-20 mt-5 lg:mt-[70px]'>
-        <article id='introTextArticle' className='grid grid-cols-1 gap-5 lg:grid-cols-2 font-inter tracking-[2px] text-justify'>
-          <p id='introText' >Welcome to my digital playground, where pixels come to life and user experiences take center stage. A passionate front-end designer dedicated to crafting visually stunning and seamlessly functional websites. With a pixel-perfect eye for detail and a love for innovative design, I transform ideas into interactive digital journeys. </p> 
+       
+        <p className='w-2 fixed lg:hidden bottom-32 right-3.5 opacity-60 text-center text-xs text-[var(--color-primary-white)]'>A b o u t &nbsp; M e</p>
 
-          
+        <article id='introTextArticle' className='grid grid-cols-1 gap-5 lg:grid-cols-2 font-inter tracking-[2px] text-justify'>
+          <p id='introText' className='text-sm' >Welcome to my digital playground, where pixels come to life and user experiences take center stage. A passionate front-end designer dedicated to crafting visually stunning and seamlessly functional websites. With a pixel-perfect eye for detail and a love for innovative design, I transform ideas into interactive digital journeys. </p>
+
+
           <div className="align-center">
-            
-          <DottedDiv id="dotDiv" height={dottedDivHeight} width={dottedDivWidth} /> 
+
+            <DottedDiv id="dotDiv" height={dottedDivHeight} width={dottedDivWidth} />
+
+          </div>
+
+        </article>
+
+        <article id='skillsArtcile' className='mt-12 mb-8'>
+          <p className='font-reef  mt-4 mb-4 text-[var(--color-primary-white)] lg:text-xl tracking-[4px] sm:text-lg xl:text-2xl text-left min-w-fit'>Skills</p>
+
+
+          <div class='grid gap-4 grid-cols-2 md:grid-cols-3 mt-4 text-sm md:text-md gap-y-5'>
+            <div>
+              <div className='flex'>
+                <div className='w-10 h-10 max-h-10'>
+                  <img src={androidLogo} height={40} width={45} className='max-h-fit' />
+                </div>
+                <div>
+                  <div className='flex items-center h-10 ml-2'>
+                    <p className='text-color font-medium'>Android </p>
+                  </div>
+                  <ul className='list-disc ml-6'>
+                    <li>
+                      Java
+                    </li>
+                    <li>
+                      Kotlin
+                    </li>
+                    <li>
+                      Jetpack Compose
+                    </li>
+                    <li>
+                      Firebase
+                    </li>
+                    <li>
+                      Retrofit
+                    </li>
+                    <li>
+                      API calls
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+
+            <div>
+              <div className='flex'>
+                <div className='w-10 h-10 max-h-10'>
+                  <img src={webDevLogo} height={40} width={45} className='max-h-fit' />
+                </div>
+                <div>
+                  <div className='flex items-center h-10 ml-2'>
+                    <p className='text-md text-color font-medium'>Web Development </p>
+                  </div>
+                  <ul className='list-disc ml-6'>
+                    <li>
+                      HTML5/CSS3
+                    </li>
+                    <li>
+                      Java Script
+                    </li>
+                    <li>
+                      React JS framework
+                    </li>
+                    <li>
+                      Tailwind CSS
+                    </li>
+                    <li>
+                      Material UI
+                    </li>
+                    <li>
+                      Firebase
+                    </li>
+                    <li>
+                      Mongo DB
+                    </li>
+                    <li>
+                      API
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+
+            <div>
+              <div className='flex'>
+                <div className='w-10 h-10 max-h-10'>
+                  <img src={uiUxLogo} height={40} width={45} className='max-h-fit' />
+                </div>
+                <div>
+                  <div className='flex items-center h-10 ml-2'>
+                    <p className='text-md text-color font-medium'>UI/UX </p>
+                  </div>
+                  <ul className='list-disc ml-6'>
+                    <li>
+                      Figma
+                    </li>
+                    <li>
+                      Adobe Xd
+                    </li>
+                    <li>
+                      User Research
+                    </li>
+                    <li>
+                      Mockup
+                    </li>
+                    <li>
+                      Prototyping
+                    </li>
+                    <li>
+                      Minimal DesignS
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+
+            <div>
+              <div className='flex'>
+                <div className='w-8 h-6 max-h-6 mt-2'>
+                  <img src={otherTechLogo} height={30} width={45} className='max-h-fit' />
+                </div>
+                <div>
+                  <div className='flex items-center h-10 ml-2'>
+                    <p className='text-md text-color font-medium'>Other skills </p>
+                  </div>
+                  <ul className='list-disc ml-6'>
+                    <li>
+                      IOT
+                    </li>
+                    <li>
+                      Machine Learning
+                    </li>
+                    <li>
+                      Responsive Design
+                    </li>
+                    <li>
+                      Code Management
+                    </li>
+                    <li>
+                      MVC Architecture
+                    </li>
+                    <li>
+                      Postman
+                    </li>
+                    <li>
+                      Version Control
+                    </li>
+                    <li>
+                      Git/GitHub
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+
+            <div>
+              <div className='flex'>
+                <div className='w-12 h-10 max-h-10'>
+                  <img src={personalLogo} height={40} width={45} className='max-h-fit' />
+                </div>
+                <div className='-ml-2'>
+                  <div className='flex items-center h-10 ml-2'>
+                    <p className='text-md text-color font-medium'>Personal </p>
+                  </div>
+                  <ul className='list-disc ml-6'>
+                    <li>
+                      Comminication
+                    </li>
+                    <li>
+                      Critical Thinking
+                    </li>
+                    <li>
+                      Time Management
+                    </li>
+                    <li>
+                      Fast Learner
+                    </li>
+                    <li>
+                      Adaptive
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+
+            <div>
+              <div className='flex -ml-2'>
+                <div className='w-14 h-10 max-h-10'>
+                  <img src={professionalLogo} className='max-h-fit' />
+                </div>
+                <div className='-ml-2'>
+                  <div className='flex items-center h-10 ml-2'>
+                    <p className='text-md text-color font-medium'>Professional </p>
+                  </div>
+                  <ul className='list-disc ml-6'>
+                    <li>
+                      Team Leader
+                    </li>
+                    <li>
+                      Collaboration
+                    </li>
+                    <li>
+                      Problem Solving
+                    </li>
+                    <li>
+                      Analyzing
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+
           </div>
         </article>
+
+        <article className='grid grid-cols-1 lg:grid-cols-2 gap-x-5 mb-10'>
+
+
+          <div >
+            <p className='font-reef lg:mt-4 lg:mb-12 text-[var(--color-primary-white)] lg:text-xl tracking-[4px] sm:text-lg xl:text-2xl text-left min-w-fit '>Achievements</p>
+
+            <div className='border-2 border-solid border-[var(--color-primary-white)] tracking-[4px] 
+                            
+                            pl-5 pr-10 py-3 
+                            lg:pl-10 lg:pr-16 lg:py-6 
+                            2xl:mr-32 mt-8
+                            xl:mr-10
+                            lg:mr-5'>
+              <ol className='list-disc ml-10 text-justify'>
+                <li>
+                  Participant of Summer Camp in Programming at ITMO University, Russia.
+                </li>
+                <li>
+                Short listed for Innovation Challenge Covid-19 Final
+                </li>
+                <li>
+                Short listed for smart Gujarat hackathon
+                </li>
+                <li>
+                Nominated For Smart India Hackathon
+                </li>
+                <li>
+                Participant of Vadodara Hackathon
+                </li>
+                <li>
+                Participant of Gesture Control Robotics
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <div >
+            <p className='font-reef  
+                          
+                          mt-8 mb-8 
+                          lg:mt-4 lg:mb-4 
+                          
+                          text-[var(--color-primary-white)] 
+                          lg:text-xl tracking-[4px] 
+                          sm:text-lg 
+                          
+                          xl:text-2xl 
+                          
+                          text-left min-w-fit grid grid-cols-1'>Primary Interest</p>
+
+            <p className='tracking-[4px] leading-7 text-md text-justify mb-6 lg:mt-12 lg:mb-16'>I am passionate about front-end web development, particularly UI/UX. 
+                                                                         With expertise in HTML, CSS, JavaScript, and front-end frameworks, 
+                                                                         I create visually appealing and user-friendly websites. I stay updated
+                                                                         on industry trends to contribute my skills to meaningful projects. 
+                                                                         My goal is to craft impactful digital solutions for positive user 
+                                                                         experiences.</p>
+
+            <DottedDiv height={120} width={dottedDivWidth}/>
+            
+          </div>
+        </article>
+
+        <article id='educationArticle'>
+            <div>
+            <p className='font-reef lg:mt-14 lg:mb-4 text-[var(--color-primary-white)] lg:text-xl tracking-[4px] sm:text-lg xl:text-2xl text-left min-w-fit '>Education</p>
+            <div className='grid grid-cols-1 lg:grid-cols-2 gap-x-5'>
+              <div>
+                  <div id='pGDiplomaEducation' className='block mt-6 mb-10'>
+                    <h2 className='text-md lg:text-lg text-[var(--color-primary-white)] font-semibold font-reef tracking-[4px]'>Post Graduation Diploma (2023)</h2>
+                    <p className='text-sm lg:text-md text-[var(--color-primary-gray)] tracking-[2px]'>Mobile Solutions Development</p>
+                    <p className='text-sm lg:text-md text-[var(--color-primary-gray)] tracking-[2px]'>Conestoga College Waterloo, Ontario</p>
+                  </div>  
+
+                  <div id='bTechEducation' className='block mt-6 lg:mb-10'>
+                    <h2 className='text-md lg:text-lg text-[var(--color-primary-white)] font-semibold font-reef tracking-[4px]'>Bachelor of Technology (2020)</h2>
+                    <p className='text-sm lg:text-md text-[var(--color-primary-gray)] tracking-[2px]'>Computer Science and Engineering</p>
+                    <p className='text-sm lg:text-md text-[var(--color-primary-gray)] tracking-[2px]'>Parul University, Gujarat</p>
+                  </div>                
+              </div>
+              <div className='lg:flex lg:justify-center'>
+              <ButtonPrimary  text="Explore my work" path="projects" variant="textBordered" border={true}/>
+              </div>
+            
+            </div>
+            </div>
+        </article>
+        <Footer home={false}/>
       </section>
-      
+    
     </AnimatedPage>
   )
 }

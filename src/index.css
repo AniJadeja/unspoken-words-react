@@ -17,6 +17,7 @@
   --color-secondary-gray: #b9b9b9;
   --color-menu-gray : #2e2e2e;
   --color-gradient-black : rgba(27,27,27,0.3);
+  --color-gradient-white : rgba(255,255,255,0.1);
 
 }
 
@@ -57,4 +58,34 @@ body {
 
 #input-typed{
   color: white;
+}
+
+@layer components {
+
+  li{
+    @apply mt-1;
+  }
+
+  ol {
+    @apply 
+    
+      ml-0
+      pl-0;
+      
+    counter-reset: item;
+  }
+  ol li {
+    @apply block
+    mb-2
+    mt-6;
+  }
+  ol li::before {
+    @apply
+      inline-block
+      w-8
+      -ml-8 font-extrabold;
+    content: "#" counter(item);
+    counter-increment: item;
+  }
+  
 }
