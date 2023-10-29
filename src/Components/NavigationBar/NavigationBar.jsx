@@ -44,19 +44,19 @@ const NavigationBar = () => {
             </li>
             <li className="nav-item">
               <NavLink
-                to="/avocations"
-                className={({ isActive }) => (isActive ? " activated" : "")
-                }
-
-              >Avocations</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
                 to="/Projects"
                 className={({ isActive }) => (isActive ? " activated" : "")
                 }
 
               >Projects</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                to="/avocations"
+                className={({ isActive }) => (isActive ? " activated" : "")
+                }
+
+              >Avocations</NavLink>
             </li>
             <li className="nav-item">
               <NavLink
@@ -94,7 +94,8 @@ const NavigationBar = () => {
       
       }>
           
-            <ul className="flex first:ml-4 last:mr-20 overflow-x-auto">
+            <ul className="flex first:ml-4 last:mr-20 overflow-x-auto" 
+            onClick={closeMobileMenu}>
               <li className="nav-item-mobile align-center">
                 <NavLink
                   to="/"
@@ -112,19 +113,19 @@ const NavigationBar = () => {
               </li>
               <li className="nav-item-mobile align-center">
                 <NavLink
-                  to="/avocations"
-                  className={({ isActive }) => (isActive ? " activated" : "")
-                  }
-
-                >Avocations</NavLink>
-              </li>
-              <li className="nav-item-mobile align-center">
-                <NavLink
                   to="/Projects"
                   className={({ isActive }) => (isActive ? " activated" : "")
                   }
 
                 >Projects</NavLink>
+              </li>
+              <li className="nav-item-mobile align-center">
+                <NavLink
+                  to="/avocations"
+                  className={({ isActive }) => (isActive ? " activated" : "")
+                  }
+
+                >Avocations</NavLink>
               </li>
               <li className="nav-item-mobile align-center">
                 <NavLink

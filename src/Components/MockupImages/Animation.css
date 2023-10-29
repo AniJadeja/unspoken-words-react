@@ -1,0 +1,19 @@
+.image-container{
+    animation: moveUpAndDown 5s ease-in-out infinite;
+}
+
+/* .image-container:hover{
+    animation-play-state: paused;
+    transition: animation 0.5s ease-in-out;
+} */
+
+@keyframes moveUpAndDown {
+
+    0%{
+        margin-top: 50%;
+    }
+    50%{
+        margin-top: 45%;
+    } 
+}
+

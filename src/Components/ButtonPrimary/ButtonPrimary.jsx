@@ -23,14 +23,14 @@ const ButtonPrimary = ({ text, path, variant, border }) => {
                     <button
                       className={
                         'bg-var(--color-primary-black) h-auto w-auto px-4 align-center mt-5 font-inter' +
-                        (border ? ' border-[1px] border-solid border-[var(--color-primary-white)] flex p-1' : ' border-0  pl-0 ')
+                        (border ? ' border-[1px] border-solid border-[var(--color-primary-accent)] flex p-1' : ' border-0  pl-0 ')
                       }
                     >
                       <p className={(border ? "" : "mt-0")}>{text}</p>
                       <img src={arrow} height={30} width={30} className="-rotate-90 mt-1 ml-2" />
                     </button>
                   </NavLink>
-                  {border ? "" : <div className="h-[1px] w-[96px] bg-white ml-2">&nbsp;</div>}
+                  {border ? "" : <div className="h-[1px] w-[96px] bg-[var(--color-primary-accent)] ml-2">&nbsp;</div>}
                 </div>
               
             </div>

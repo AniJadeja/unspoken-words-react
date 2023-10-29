@@ -20,7 +20,7 @@ const DottedDiv = ({ width, height }) => {
     lineHeight: `${dotSize}px`,
     whiteSpace: 'pre',
     overflow: 'hidden',
-    color: 'white',
+    color: 'var(--color-primary-white)',
     letterSpacing: '8px',
     // Optional: Add overflow: hidden to clip any overflowing content
   };
