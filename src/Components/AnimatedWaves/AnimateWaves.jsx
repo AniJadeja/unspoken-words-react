@@ -11,7 +11,6 @@ const LottieAnimation = () => {
       container: animationContainer.current,
       renderer: 'svg',
       loop: true,
-      autoplay: true,
       animationData: Waves, // Replace with your animation data
     });
 
@@ -19,7 +18,7 @@ const LottieAnimation = () => {
   }, []);
 
   return (
-    <div ref={animationContainer}></div>
+    <div ref={animationContainer} ></div>
   );
 };
 

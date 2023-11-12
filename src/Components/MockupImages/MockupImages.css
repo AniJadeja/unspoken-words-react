@@ -43,6 +43,6 @@
   border: 1px;
   border-color: var(--color-gradient-white);
   border-style: solid;
-  
+  box-shadow: inset 20% 20% 10% 30% 20px var(--color-primary-accent-light);
   margin-top: -62%;
 }

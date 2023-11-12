@@ -159,14 +159,21 @@ const AboutMe = () => {
                       Mongo DB
                     </li>
                     <li>
-                      API
+                      Express JS
+                    </li>
+                    <li>
+                      Node JS
+                    </li>
+                    <li>
+                      API calls
+                    </li>
+                    <li>
+                      API Building
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
-
-
             <div>
               <div className='flex'>
                 <div className='w-10 h-10 max-h-10'>
@@ -200,7 +207,7 @@ const AboutMe = () => {
                       Prototyping
                     </li>
                     <li>
-                      Minimal DesignS
+                      Minimal Designs
                     </li>
                   </ul>
                 </div>
@@ -248,6 +255,9 @@ const AboutMe = () => {
                     </li>
                     <li>
                       Git/GitHub
+                    </li>
+                    <li>
+                      MVC/MVVM Architecture
                     </li>
                   </ul>
                 </div>
