@@ -6,27 +6,28 @@ import { availableWidth } from '..';
 
 import '../index.css'
 import Footer from '../Components/Footer/Footer';
-import otherTech from '../Assets/lottie-icons/other_tech.lottie'
-import android from '../Assets/lottie-icons/android.lottie'
-import webDev from '../Assets/lottie-icons/web_dev.lottie'
-import personal from '../Assets/lottie-icons/personal.lottie'
-import professional from '../Assets/lottie-icons/professional.lottie'
-import uiUx from '../Assets/lottie-icons/ui_ux.lottie'
+import otherTech from '../assets/lottie-icons/other_tech.lottie'
+import android from '../assets/lottie-icons/android.lottie'
+import webDev from '../assets/lottie-icons/web_dev.lottie'
+import personal from '../assets/lottie-icons/personal.lottie'
+import professional from '../assets/lottie-icons/professional.lottie'
+import uiUx from '../assets/lottie-icons/ui_ux.lottie'
 import { DotLottiePlayer } from '@dotlottie/player-component';
+import AboutMeModel from '../models/AboutMeModel';
+import { getCurrentPageData } from '../firebase/manageRealtimeDatabase.mjs';
+import { set } from 'firebase/database';
 
 const AboutMe = () => {
 
-  const introTextArticle = document.getElementById('introTextArticle');
 
   const [dottedDivWidth, setDottedDivWidth] = useState(250);
   const [dottedDivHeight, setDottedDivHeight] = useState(100);
-
+  const [aboutMeModel, setAboutMeModel] = useState();
 
 
 
   useEffect(() => {
     const introText = document.getElementById('introText');
-    console.log("use Effect ran");
     if (introText) {
       if (availableWidth > 768) {
         setDottedDivWidth((introText.clientWidth));
@@ -36,20 +37,16 @@ const AboutMe = () => {
         setDottedDivWidth(introText.clientWidth);
 
       }
-
-      console.log("\nintroTextHeight : " + introText.clientHeight)
-      //console.log("introTextWidth : " +introText.clientWidth)
-
-
-
-      console.log("calculated dottedDivWidth : " + introText.clientWidth)
-      // console.log("calculated dottedDivWidth : " + dottedDivWidth)
-
     }
     else {
       console.log("introText is unavailable")
     }
-  })
+    getCurrentPageData().then((data) => {
+      setAboutMeModel(new AboutMeModel(data));
+    })
+
+
+  }, [])
 
   return (
     <AnimatedPage>
@@ -58,7 +55,12 @@ const AboutMe = () => {
         <p className='w-2 fixed lg:hidden bottom-32 right-3.5 opacity-60 text-center text-xs text-[var(--color-primary-white)]'>A b o u t &nbsp; M e</p>
 
         <article id='introTextArticle' className='grid grid-cols-1 gap-5 lg:grid-cols-2 font-inter tracking-[2px] text-justify'>
-          <p id='introText' className='text-xs sm:text-sm' >Welcome to my digital playground, where pixels come to life and user experiences take center stage. A passionate front-end designer dedicated to crafting visually stunning and seamlessly functional websites. With a pixel-perfect eye for detail and a love for innovative design, I transform ideas into interactive digital journeys. </p>
+          <p id='introText' className='text-xs sm:text-sm' >
+            {
+              aboutMeModel ? aboutMeModel.introParagraph : null
+            }
+
+          </p>
 
 
           <div className="align-center">
@@ -77,15 +79,15 @@ const AboutMe = () => {
             <div>
               <div className='flex'>
                 <div className='w-10 h-10 max-h-10'>
-                  
 
-               
+
+
                   <dotlottie-player
                     autoplay
                     loop
                     mode="normal"
                     src={android}
-                    style={{height:'40px', width:'auto'}}
+                    style={{ height: '40px', width: 'auto' }}
                   >
                   </dotlottie-player>
 
@@ -95,24 +97,12 @@ const AboutMe = () => {
                     <p className='text-[var(--color-primary-accent)] '>Android </p>
                   </div>
                   <ul className='list-disc ml-6'>
-                    <li>
-                      Java
-                    </li>
-                    <li>
-                      Kotlin
-                    </li>
-                    <li>
-                      Jetpack Compose
-                    </li>
-                    <li>
-                      Firebase
-                    </li>
-                    <li>
-                      Retrofit
-                    </li>
-                    <li>
-                      API calls
-                    </li>
+                    {
+                      aboutMeModel ? aboutMeModel.skills.androidSkills.map((skill) => {
+                        return <li>{skill}</li>
+                      }
+                      ) : null
+                    }
                   </ul>
                 </div>
               </div>
@@ -127,49 +117,22 @@ const AboutMe = () => {
                     loop
                     mode="normal"
                     src={webDev}
-                    style={{height:'40px', width:'auto'}}
+                    style={{ height: '40px', width: 'auto' }}
                   >
                   </dotlottie-player>
-                 
+
                 </div>
                 <div>
                   <div className='flex items-center h-10 ml-2'>
                     <p className='text-base text-[var(--color-primary-accent)] '>Web Development </p>
                   </div>
                   <ul className='list-disc ml-6'>
-                    <li>
-                      HTML5/CSS3
-                    </li>
-                    <li>
-                      Java Script
-                    </li>
-                    <li>
-                      React JS framework
-                    </li>
-                    <li>
-                      Tailwind CSS
-                    </li>
-                    <li>
-                      Material UI
-                    </li>
-                    <li>
-                      Firebase
-                    </li>
-                    <li>
-                      Mongo DB
-                    </li>
-                    <li>
-                      Express JS
-                    </li>
-                    <li>
-                      Node JS
-                    </li>
-                    <li>
-                      API calls
-                    </li>
-                    <li>
-                      API Building
-                    </li>
+                    {
+                      aboutMeModel ? aboutMeModel.skills.webDevelopmentSkills.map((skill) => {
+                        return <li>{skill}</li>
+                      }
+                      ) : null
+                    }
                   </ul>
                 </div>
               </div>
@@ -177,12 +140,12 @@ const AboutMe = () => {
             <div>
               <div className='flex'>
                 <div className='w-10 h-10 max-h-10'>
-                <dotlottie-player
+                  <dotlottie-player
                     autoplay
                     loop
                     mode="normal"
                     src={uiUx}
-                    style={{height:'40px', width:'auto',scale:'1.3'}}
+                    style={{ height: '40px', width: 'auto', scale: '1.3' }}
                   >
                   </dotlottie-player>
                 </div>
@@ -191,24 +154,12 @@ const AboutMe = () => {
                     <p className='text-base text-[var(--color-primary-accent)]'>UI/UX </p>
                   </div>
                   <ul className='list-disc ml-6'>
-                    <li>
-                      Figma
-                    </li>
-                    <li>
-                      Adobe Xd
-                    </li>
-                    <li>
-                      User Research
-                    </li>
-                    <li>
-                      Mockup
-                    </li>
-                    <li>
-                      Prototyping
-                    </li>
-                    <li>
-                      Minimal Designs
-                    </li>
+                    {
+                      aboutMeModel ? aboutMeModel.skills.uiuxSkills.map((skill) => {
+                        return <li>{skill}</li>
+                      }
+                      ) : null
+                    }
                   </ul>
                 </div>
               </div>
@@ -218,12 +169,12 @@ const AboutMe = () => {
             <div>
               <div className='flex'>
                 <div className='w-10 h-10 max-h-10'>
-                <dotlottie-player
+                  <dotlottie-player
                     autoplay
                     loop
                     mode="normal"
                     src={otherTech}
-                    style={{height:'40px', width:'auto', scale:'2'}}
+                    style={{ height: '40px', width: 'auto', scale: '2' }}
                   >
                   </dotlottie-player>
                 </div>
@@ -232,33 +183,12 @@ const AboutMe = () => {
                     <p className='text-base text-[var(--color-primary-accent)]'>Other skills </p>
                   </div>
                   <ul className='list-disc ml-6'>
-                    <li>
-                      IOT
-                    </li>
-                    <li>
-                      Machine Learning
-                    </li>
-                    <li>
-                      Responsive Design
-                    </li>
-                    <li>
-                      Code Management
-                    </li>
-                    <li>
-                      MVC Architecture
-                    </li>
-                    <li>
-                      Postman
-                    </li>
-                    <li>
-                      Version Control
-                    </li>
-                    <li>
-                      Git/GitHub
-                    </li>
-                    <li>
-                      MVC/MVVM Architecture
-                    </li>
+                    {
+                      aboutMeModel ? aboutMeModel.skills.otherSkills.map((skill) => {
+                        return <li>{skill}</li>
+                      }
+                      ) : null
+                    }
                   </ul>
                 </div>
               </div>
@@ -268,12 +198,12 @@ const AboutMe = () => {
             <div>
               <div className='flex'>
                 <div className='w-10 h-10 max-h-10'>
-                <dotlottie-player
+                  <dotlottie-player
                     autoplay
                     loop
                     mode="normal"
                     src={personal}
-                    style={{height:'40px', width:'auto', scale:'1.3'}}
+                    style={{ height: '40px', width: 'auto', scale: '1.3' }}
                   >
                   </dotlottie-player>
                 </div>
@@ -282,21 +212,12 @@ const AboutMe = () => {
                     <p className='text-base text-[var(--color-primary-accent)]'>Personal </p>
                   </div>
                   <ul className='list-disc ml-6'>
-                    <li>
-                      Comminication
-                    </li>
-                    <li>
-                      Critical Thinking
-                    </li>
-                    <li>
-                      Time Management
-                    </li>
-                    <li>
-                      Fast Learner
-                    </li>
-                    <li>
-                      Adaptive
-                    </li>
+                    {
+                      aboutMeModel ? aboutMeModel.skills.personalSkills.map((skill) => {
+                        return <li>{skill}</li>
+                      }
+                      ) : null
+                    }
                   </ul>
                 </div>
               </div>
@@ -306,12 +227,12 @@ const AboutMe = () => {
             <div>
               <div className='flex '>
                 <div className='w-10 h-10 max-h-10 overflow-hidden'>
-                <dotlottie-player
+                  <dotlottie-player
                     autoplay
                     loop
                     mode="normal"
                     src={professional}
-                    style={{height:'40px', width:'auto',scale:'1.4'}}
+                    style={{ height: '40px', width: 'auto', scale: '1.4' }}
                   >
                   </dotlottie-player>
                 </div>
@@ -320,18 +241,12 @@ const AboutMe = () => {
                     <p className='text-base text-[var(--color-primary-accent)]'>Professional </p>
                   </div>
                   <ul className='list-disc ml-6'>
-                    <li>
-                      Team Leader
-                    </li>
-                    <li>
-                      Collaboration
-                    </li>
-                    <li>
-                      Problem Solving
-                    </li>
-                    <li>
-                      Analyzing
-                    </li>
+                    {
+                      aboutMeModel ? aboutMeModel.skills.professionalSkills.map((skill) => {
+                        return <li>{skill}</li>
+                      }
+                      ) : null
+                    }
                   </ul>
                 </div>
               </div>
@@ -354,24 +269,12 @@ const AboutMe = () => {
                             xl:mr-10
                             lg:mr-5'>
               <ol className='list-disc ml-10 text-justify'>
-                <li>
-                  Participant of Summer Camp in Programming at ITMO University, Russia.
-                </li>
-                <li>
-                  Short listed for Innovation Challenge Covid-19 Final
-                </li>
-                <li>
-                  Short listed for smart Gujarat hackathon
-                </li>
-                <li>
-                  Nominated For Smart India Hackathon
-                </li>
-                <li>
-                  Participant of Vadodara Hackathon
-                </li>
-                <li>
-                  Participant of Gesture Control Robotics
-                </li>
+                {
+                  aboutMeModel ? aboutMeModel.achievements.map((achievement) => {
+                    return <li className='text-xs sm:text-sm lg:text-base mb-2'>{achievement}</li>
+                  }
+                  ) : null
+                }
               </ol>
             </div>
           </div>
@@ -389,13 +292,13 @@ const AboutMe = () => {
                           xl:text-2xl 
                           
                           text-left min-w-fit grid grid-cols-1'>Primary Interest</p>
-
-            <p className='tracking-[4px] leading-7 text-xs sm:text-sm text-justify mb-6 lg:mt-12 lg:mb-16'>I am passionate about front-end web development, particularly UI/UX.
-              With expertise in HTML, CSS, JavaScript, and front-end frameworks,
-              I create visually appealing and user-friendly <span className='text-[var(--color-primary-accent-light)]'>Websites and Android Applications.</span>  I stay updated
-              on industry trends to contribute my skills to meaningful projects.
-              My goal is to craft impactful digital solutions for positive user
-              experiences.</p>
+            <p className='tracking-[4px] leading-7 text-xs sm:text-sm text-justify mb-6 lg:mt-12 lg:mb-16'>{
+              aboutMeModel ? aboutMeModel.primaryInterestStart : null
+            } <span className='text-[var(--color-primary-accent-light)]'>{
+              aboutMeModel ? aboutMeModel.primaryInterestHighlight : null
+            }</span> {
+                aboutMeModel ? aboutMeModel.primaryInterestEnd : null
+              }</p>
 
             <DottedDiv height={120} width={dottedDivWidth} />
 
@@ -408,15 +311,33 @@ const AboutMe = () => {
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-x-5'>
               <div>
                 <div id='pGDiplomaEducation' className='block mt-6 mb-10'>
-                  <h2 className='text-sm sm:text-base lg:text-lg text-[var(--color-primary-white)] font-semibold font-reef tracking-[4px]'>Post Graduation Diploma (2023)</h2>
-                  <p className='text-xs lg:text-base text-[var(--color-primary-gray)] tracking-[2px]'>Mobile Solutions Development</p>
-                  <p className='text-xs lg:text-base text-[var(--color-primary-gray)] tracking-[2px]'>Conestoga College Waterloo, Ontario</p>
+                  <h2 className='text-sm sm:text-base lg:text-lg text-[var(--color-primary-white)] font-semibold font-reef tracking-[4px]'>{
+                    aboutMeModel ? aboutMeModel.education.primaryEducation[0] : null
+                  }</h2>
+                  <p className='text-xs lg:text-base text-[var(--color-primary-gray)] tracking-[2px]'>{
+                    aboutMeModel ? aboutMeModel.education.primaryEducation[1] : null
+                  }</p>
+                  <p className='text-xs lg:text-base text-[var(--color-primary-gray)] tracking-[2px]'>
+                    {
+                      aboutMeModel ? aboutMeModel.education.primaryEducation[2] : null
+                    }
+                  </p>
                 </div>
 
                 <div id='bTechEducation' className='block mt-6 lg:mb-10'>
-                  <h2 className='text-sm sm:text-base lg:text-lg text-[var(--color-primary-white)] font-semibold font-reef tracking-[4px]'>Bachelor of Technology (2020)</h2>
-                  <p className='text-xs lg:text-base text-[var(--color-primary-gray)] tracking-[2px]'>Computer Science and Engineering</p>
-                  <p className='text-xs lg:text-base text-[var(--color-primary-gray)] tracking-[2px]'>Parul University, Gujarat</p>
+                  <h2 className='text-sm sm:text-base lg:text-lg text-[var(--color-primary-white)] font-semibold font-reef tracking-[4px]'>{
+                    aboutMeModel ? aboutMeModel.education.secondaryEducation[0] : null
+                  }</h2>
+                  <p className='text-xs lg:text-base text-[var(--color-primary-gray)] tracking-[2px]'>
+                    {
+                      aboutMeModel ? aboutMeModel.education.secondaryEducation[1] : null
+                    }
+                  </p>
+                  <p className='text-xs lg:text-base text-[var(--color-primary-gray)] tracking-[2px]'>
+                    {
+                      aboutMeModel ? aboutMeModel.education.secondaryEducation[2] : null
+                    }
+                  </p>
                 </div>
               </div>
               <div className='lg:flex lg:justify-center text-xs sm:text-base'>

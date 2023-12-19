@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import Logo from '../../Assets/logo.svg'
+import Logo from '../../assets/logo.svg'
 import { projectName } from "../../index";
 import { BurgerClose }
   from "react-burger-icons";
 import './NavStyle.css';
+import { getCurrentPage, setCurrentPage } from "../../utils/CommonPrefs.mjs";
 
 const NavigationBar = () => {
 
@@ -30,39 +31,59 @@ const NavigationBar = () => {
             <li className="nav-item">
               <NavLink
                 to="/"
-                className={({ isActive }) => (isActive ? " activated" : "")
-                }
+                className={({ isActive }) => {
+                  if (isActive) {
+                   setCurrentPage("home");
+                  }
+                  return isActive ? "activated" : "";
+                }}
 
               >Home</NavLink>
             </li>
             <li className="nav-item">
               <NavLink
                 to="/aboutme"
-                className={({ isActive }) => (isActive ? " activated" : "")
-                }
+                className={({ isActive }) => {
+                  if (isActive) {
+                   setCurrentPage("aboutme");
+                  }
+                  return isActive ? "activated" : "";
+                }}
               >About Me</NavLink>
             </li>
             <li className="nav-item">
               <NavLink
                 to="/Projects"
-                className={({ isActive }) => (isActive ? " activated" : "")
-                }
+                className={({ isActive }) => {
+                  if (isActive) {
+                   setCurrentPage("projects");
+                  }
+                  return isActive ? "activated" : "";
+                }}
 
               >Projects</NavLink>
             </li>
             <li className="nav-item">
               <NavLink
                 to="/avocations"
-                className={({ isActive }) => (isActive ? " activated" : "")
-                }
+                className={({ isActive }) => {
+                  if (isActive) {
+                   setCurrentPage("avocations");
+                  }
+                  return isActive ? "activated" : "";
+                }}
 
               >Avocations</NavLink>
             </li>
             <li className="nav-item">
               <NavLink
                 to="/Resume"
-                className={({ isActive }) => (isActive ? " activated" : "")
-                }
+                className={({ isActive }) => {
+                  if (isActive) {
+                   setCurrentPage("resume");
+                  }
+                  return isActive ? "activated" : "";
+                }}
 
               >Resume</NavLink>
             </li>
@@ -99,39 +120,59 @@ const NavigationBar = () => {
               <li className="nav-item-mobile align-center">
                 <NavLink
                   to="/"
-                  className={({ isActive }) => (isActive ? " activated" : "")
-                  }
+                  className={({ isActive }) => {
+                    if (isActive) {
+                     setCurrentPage("home");
+                    }
+                    return isActive ? "activated" : "";
+                  }}
 
                 >Home</NavLink>
               </li>
               <li className="nav-item-mobile align-center">
                 <NavLink
                   to="/aboutme"
-                  className={({ isActive }) => (isActive ? " activated" : "")
-                  }
+                  className={({ isActive }) => {
+                    if (isActive) {
+                     setCurrentPage("aboutme");
+                    }
+                    return isActive ? "activated" : "";
+                  }}
                 >About Me</NavLink>
               </li>
               <li className="nav-item-mobile align-center">
                 <NavLink
                   to="/Projects"
-                  className={({ isActive }) => (isActive ? " activated" : "")
-                  }
+                  className={({ isActive }) => {
+                    if (isActive) {
+                     setCurrentPage("projects");
+                    }
+                    return isActive ? "activated" : "";
+                  }}
 
                 >Projects</NavLink>
               </li>
               <li className="nav-item-mobile align-center">
                 <NavLink
                   to="/avocations"
-                  className={({ isActive }) => (isActive ? " activated" : "")
-                  }
+                  className={({ isActive }) => {
+                    if (isActive) {
+                     setCurrentPage("avocations");
+                    }
+                    return isActive ? "activated" : "";
+                  }}
 
                 >Avocations</NavLink>
               </li>
               <li className="nav-item-mobile align-center">
                 <NavLink
                   to="/Resume"
-                  className={({ isActive }) => (isActive ? " activated" : "")
-                  }
+                  className={({ isActive }) => {
+                    if (isActive) {
+                     setCurrentPage("resume");
+                    }
+                    return isActive ? "activated" : "";
+                  }}
 
                 >Resume</NavLink>
               </li>

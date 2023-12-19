@@ -1,5 +1,5 @@
 import React from 'react'
-import arrow from '../../Assets/arrow.gif'
+import arrow from '../../assets/arrow.gif'
 import { NavLink } from 'react-router-dom'
 
 const ButtonPrimary = ({ text, path, variant, border }) => {

@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { availableHeight, availableWidth, getAvailableHeight, getAvailableWidth, projectName } from '..';
+import { availableWidth } from '..';
 import DottedDiv from '../Components/DottedDiv/DottedDiv';
-
-import displayPicture from '../Assets/displayPicture.png'
 import ButtonPrimary from '../Components/ButtonPrimary/ButtonPrimary';
 import AnimatedPage from '../Components/Animated/AnimatedPage';
 import Typed from 'react-typed';
 import Footer from '../Components/Footer/Footer';
+import { getCurrentPageData} from '../firebase/manageRealtimeDatabase.mjs';
+
 
 
 const Home = () => {
@@ -15,6 +15,7 @@ const Home = () => {
   const [subArticleHeight, setSubArticleHeight] = useState('auto'); // Initialize sub article height as 'auto'
   const [dottedDivisionWidth, setDottedDivisionWidth] = useState('270'); // Initialize isMobileViewActive as true
   const [dottedDivisionHeight, setDottedDivisionHeight] = useState(130); // Initialize isMobileViewActive as true
+  const [ displayPicture, setDisplayPicture] = useState(''); 
   const imageHeight = useRef(560);
   const typedStrings = useRef([
     'Aniruddhsinh Jadeja',
@@ -44,7 +45,7 @@ const Home = () => {
       const newArticleHeight = `calc(${newSectionHeight} - ${footerHeight}px)`;
 
       const newSubArticleHeight = `calc(${newSectionHeight} - ${footerHeight}px - 32px)`;
-      console.log("Available width " + availableWidth.current )
+     // console.log("Available width " + availableWidth.current )
 
       if(avialableWidth.current<359){
   
@@ -81,6 +82,9 @@ const Home = () => {
   useEffect(() => {
     // Run on initial mount
     calculateHeights();
+    getCurrentPageData().then((data) => {
+      setDisplayPicture(data.displayPictureUrl);
+    })
   }, []);
 
   return (
