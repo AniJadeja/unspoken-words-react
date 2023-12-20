@@ -1,23 +1,28 @@
-
-
 .image-container {
   display: flex;
   flex-direction: column;
   transform: rotate3d(30deg, 20deg, 10deg);
-  transition: all 0.2s ease-in-out;
-  margin-top: 50%;
+  transition: all 0.5s ease-in-out;
+  margin-top: 35%;
   height: 100%;
   width: 100%;
+  
+}
+.image-container:hover {
+  filter: grayscale(0%) brightness(1);
 }
 
 .image {
   width: 100% ; /* Set your desired width */
   height: 100%;
   transform: skew(50deg, -20deg); /* Combine scale and skew */
-  box-shadow: 0px 0px 50px 5px var(--color-secondary-gray-shadow);
   transition: margin-top 1s ease-in-out; /* Add a transition for margin-top */
-  border: 0.1px ;
-  border-color: var(--color-secondary-gray-shadow);
+  box-shadow: -3px 3px 30px 1px var(--color-primary-accent-shadow);
+  transition: margin-top 1s ease-in-out; 
+  border: 1px;
+  border-color: var(--color-gradient-white);
+  border-radius: 5px;
   border-style: solid;
   margin-top: -39%;
+  cursor: pointer;
 }

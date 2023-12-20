@@ -5,8 +5,10 @@ import { getDownloadURL, getStorage, ref as storageRef } from "firebase/storage"
 import { getCurrentPage, setCurrentPage } from "../utils/CommonPrefs.mjs";
 import { HomePageModel } from "../models/HomeModel.js";
 import AboutMeModel from "../models/AboutMeModel.js";
+import ProjectsModel from "../models/ProjectsModel.js";
 
 import { database, storage } from "./firebaseConfig.js";
+import ProjectModel from "../models/ProjectModel.js";
 
 function getCurrentPageDatabaseReference() {
   return ref(database, getCurrentPage()+'/');
@@ -166,6 +168,10 @@ export { writeCurrentPageData, getCurrentPageData, updateCurrentPageData };
 //   education,
 // };
 
+
+// // ************* AboutMeModel  ************* //
+
+
 // // setCurrentPage("aboutme");
 // // const aboutMeModel = new AboutMeModel(AboutMeData);
 // // console.log("manageRealtimeDatabase => Writing current page data " + getCurrentPageDatabaseReference());
@@ -185,3 +191,37 @@ export { writeCurrentPageData, getCurrentPageData, updateCurrentPageData };
 
 
 // //const homePageModel = new HomePageModel(home);
+
+// // ************* ProjectsModel  ************* //
+
+
+// const project = {
+//   name: 'Unspoken Words',
+//   description: 'Project “Unspoken Words” is a portfolio website that represents my self to the best without meeting me. This website is a combination of my thoughts and ideology I follow, while keeping the information as minimal as possile. I designed this website to be a full scale project where this could have been a product itself. This project is connected with Google Firebase Realtime database to support the dynamic nature of the data. As I like to work on UI Design, I have created a perfect blend of my belief and learning. The aim of this project is to lead users to focus on who I am and what I can do without any distractions. This project engages users by providing necessary information with subtle animations to make it interesting enough.',
+//   images: ["home", "signup", "trip"],
+//  // images: [UnspokenWordsHome, UnspokenWordsAvocations, UnspokenWordsResume],
+//   technologies :[{
+//     icon : "firebaseIcon",
+//     name : 'Firebase'
+//   },{
+//     icon : "reactIcon",
+//     name : 'React JS'
+//   }],
+//   features : ["User Centric", "Responsive", "Dynamic", "Minimalistic"],
+//   isDarken : false
+// }
+
+// const projectModel = new ProjectModel(project); 
+// const projects = [projectModel];
+// const projectsData = {
+//   name: "projects",
+//   projects: projects
+// };
+
+// setCurrentPage("projects");
+
+// const projectsModel = new ProjectsModel(projectsData);
+
+// console.log("manageRealtimeDatabase => Writing current page data " + getCurrentPageDatabaseReference());
+// writeCurrentPageData(projectsModel);
+

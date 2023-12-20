@@ -110,7 +110,7 @@ const NavigationBar = () => {
 
         {/*Bottom Navigation Menu*/}
 
-        <div className={"nav-header align-mobile bg-[var(--color-menu-gray)] rounded-s-full z-10 transition-transform transform md:-mr-16 " + (!isClosed ? "translate-x-full" : "translate-x-10")
+        <div className={"nav-header align-mobile bg-[var(--color-menu-gray)] rounded-s-full z-10 transition-transform transform shadow-sm shadow-[var(--color-primary-accent)] md:-mr-16 " + (!isClosed ? "translate-x-full" : "translate-x-10")
         /* The translate property moves the navbar from offscreen to onscreen and again to offscreen. */
       
       }>

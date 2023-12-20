@@ -19,7 +19,7 @@ const Home = () => {
   const imageHeight = useRef(560);
   const typedStrings = useRef([
     'Aniruddhsinh Jadeja',
-    '   A Web Devloper',
+    '   A Web Developer',
   ])
 
 
@@ -67,7 +67,7 @@ const Home = () => {
       else{
         setDottedDivisionWidth((avialableWidth.current*40)/100)
         imageHeight.current = ((avialableHeight.current * 70) / 100)
-        typedStrings.current = ['Aniruddhsinh Jadeja','A Web Devloper']
+        typedStrings.current = ['Aniruddhsinh Jadeja','A Web Developer']
       }
       
       // Set the calculated heights
@@ -98,7 +98,7 @@ const Home = () => {
           style={{ minHeight: articleHeight }}>
           {/* Left and Right Article Divs */}
           <div className={(avialableWidth.current < 768) ? 'mx-5 grid grid-cols-1 gap-4' : 'grid grid-cols-2 gap-4 mx-5'}>
-            <div className={'p-2 lg:order-last align-center sm:-mt-16 sm2:-mt-12 sm3:-mt-10 sm4:-mt-14 lg:-mt-8'} id='leftArticle'>
+            <div className={'p-2 lg:order-last align-center sm:-mt-16 sm2:-mt-12 sm3:-mt-10 sm4:-mt-14 lg:-mt-8'} id='leftArticle' style={{height:imageHeight.current}}>
               <img  className='' height={imageHeight.current} src={displayPicture} width="auto" style={{ objectFit: "cover", mixBlendMode: 'lighten', maxHeight: `${imageHeight.current}px` }} />
             </div>
             <div  className={(avialableWidth.current < 768) ?

@@ -34,7 +34,8 @@
     }
   
     .activated {
-      @apply text-[var(--color-primary-white)] 
+      @apply text-[var(--color-primary-accent)]
+             font-semibold
              transition ease-in-out delay-100
     }
 

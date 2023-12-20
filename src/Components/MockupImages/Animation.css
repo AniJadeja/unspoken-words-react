@@ -10,10 +10,10 @@
 @keyframes moveUpAndDown {
 
     0%{
-        margin-top: 50%;
+        margin-top: 35%;
     }
     50%{
-        margin-top: 45%;
+        margin-top: 40%;
     } 
 }
 
