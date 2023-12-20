@@ -13,6 +13,7 @@ const ProjectRow = ({project}) => {
   }
 
   return (
+    <div>
     <div id='outerWrapper' className='rowWrapper grid grid-cols-1 xl:grid-cols-2 text-[var(--color-primary-white)] p-10 lg:px-20'>
       <div id='firstColumnWrapper' className="firstColumnWrapper flex flex-col  ">
         <div className=''>
@@ -58,7 +59,7 @@ const ProjectRow = ({project}) => {
       </div>
       <div className='secondColumnWrapper'>
         <div
-        ><p className='font-reef text-[var(--color-primary-white)] lg:text-xl tracking-[4px] sm:text-lg xl:text-2xl text-left min-w-fit mt-10 lg:mt-0'>Description {window.innerWidth}</p></div>
+        ><p className='font-reef text-[var(--color-primary-white)] lg:text-xl tracking-[4px] sm:text-lg xl:text-2xl text-left min-w-fit mt-10 lg:mt-0'>Description</p></div>
         <div className=''>
           <p id='projectDescription' className='text-sm md:text-base font-inter leading-loose tracking-[2px] text-justify mt-12' style={{ lineHeight: '1.8' }}>{project.description}</p>
         </div>
@@ -78,6 +79,9 @@ const ProjectRow = ({project}) => {
           }
         </div>
       </div>
+      
+    </div>
+    <hr className='mt-10 mb-10 lg:mb-20 lg:mt-20 px-10'/>
     </div>
   )
 }

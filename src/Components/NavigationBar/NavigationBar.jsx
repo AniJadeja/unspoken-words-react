@@ -102,7 +102,6 @@ const NavigationBar = () => {
         <div className="fixed right-0 bottom-11 h-12 w-12 bg-[var(--color-menu-gray)] rounded-s-xl z-20">
           <div className="flex justify-center items-center h-full " onClick={() => {
             setIsClosed(!isClosed)
-            console.log(isClosed)
           }}>
             <BurgerClose isClosed={isClosed} />
           </div>

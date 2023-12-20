@@ -48,20 +48,15 @@ const Home = () => {
      // console.log("Available width " + availableWidth.current )
 
       if(avialableWidth.current<359){
-  
         setDottedDivisionHeight(100);
         setDottedDivisionWidth((avialableWidth.current*78)/100)
-        console.log("Dotted Div Height " + dottedDivisionHeight)
       }
       else if(availableWidth.current < 560){
         imageHeight.current = ((avialableHeight.current * 60) / 100)
-        console.log("Image Height set " + imageHeight)
       }
       else if(avialableWidth.current<768)
       {
-        console.log("Setting Dotted Div width")
         setDottedDivisionWidth((avialableWidth.current*80)/100)
-        console.log("Dotted Div width set : " + dottedDivisionWidth.current);
         imageHeight.current = ((avialableHeight.current * 50) / 100)
       }
       else{
