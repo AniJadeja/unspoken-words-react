@@ -314,7 +314,11 @@ const AboutMe = () => {
                 <div id='pGDiplomaEducation' className='block mt-6 mb-10'>
                   <h2 className='text-sm sm:text-base lg:text-lg text-[var(--color-primary-white)] font-semibold font-reef tracking-[4px]'>{
                     aboutMeModel ? aboutMeModel.education.primaryEducation[0] : null
-                  }</h2>
+                  }
+                  {
+                    aboutMeModel ? aboutMeModel.education.primaryEducation[3] : null
+                  }
+                  </h2>
                   <p className='text-xs lg:text-base text-[var(--color-primary-gray)] tracking-[2px]'>{
                     aboutMeModel ? aboutMeModel.education.primaryEducation[1] : null
                   }</p>
@@ -328,7 +332,11 @@ const AboutMe = () => {
                 <div id='bTechEducation' className='block mt-6 lg:mb-10'>
                   <h2 className='text-sm sm:text-base lg:text-lg text-[var(--color-primary-white)] font-semibold font-reef tracking-[4px]'>{
                     aboutMeModel ? aboutMeModel.education.secondaryEducation[0] : null
-                  }</h2>
+                  }
+                  {
+                    aboutMeModel ? aboutMeModel.education.secondaryEducation[3] : null
+                  }
+                  </h2>
                   <p className='text-xs lg:text-base text-[var(--color-primary-gray)] tracking-[2px]'>
                     {
                       aboutMeModel ? aboutMeModel.education.secondaryEducation[1] : null
