@@ -2,6 +2,7 @@ import {ref, onValue, set} from "firebase/database";
 import { getCurrentPage, setCurrentPage } from "../utils/CommonPrefs.mjs";
 import { database } from "./firebaseConfig.js";
 import ProjectModel from "../models/ProjectModel.js";
+import ProjectsModel from "../models/ProjectsModel.js";
 
 function getCurrentPageDatabaseReference() {
   return ref(database, getCurrentPage()+'/');
@@ -58,7 +59,6 @@ export { writeCurrentPageData, getCurrentPageData, updateCurrentPageData };
 //     "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Funspoken%20words%2Fproject-image-2.png?alt=media", 
 //     "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Funspoken%20words%2Fproject-image-3.png?alt=media"
 //   ],
-//  // images: [UnspokenWordsHome, UnspokenWordsAvocations, UnspokenWordsResume],
 //   technologies :[{
 //     icon : "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Funspoken%20words%2Fproject-technology-1.svg?alt=media",
 //     name : 'Firebase'
@@ -90,24 +90,49 @@ export { writeCurrentPageData, getCurrentPageData, updateCurrentPageData };
 //   }
 
 // ],
-//   features : ["Full Scale Project", "Responsive", "Dynamic", "Scalable","Data Integration"],
+//   features : ["Full Scale Project", "Responsive", "Dynamic", "Scalable"],
 //   isDarken : false
 // }
 
 
-// const projectModel = new ProjectModel(project1); 
 
-// const projectModel2 = new ProjectModel(project2);
-// const projects = [projectModel, projectModel2];
-// const projectsData = {
-//   name: "projects",
-//   projects: projects
-// };
 
-// setCurrentPage("projects");
 
-// const projectsModel = new ProjectsModel(projectsData);
+// const project3 = {
+//   name: 'Photos App',
+//   description: "The 'Photos App' showcases my Android coding proficiency, marking one of my initial forays into Android development. Effectively, it retrieves images from the user's device, emphasizing a seamless, one-handed user experience. Prioritizing accessibility, the UI adheres to one-handed principles, ensuring responsiveness and user intuitiveness. Developed in Java, the project leverages the Glide library for efficient image loading, with automatic caching minimizing subsequent load times after the initial heavy processing. By proactively addressing issues, this app enhances user experience, exemplifying my commitment to user-centric design and efficient Android development.",
+//   images: [
+//     "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Fphotos%20app%2Fproject-image-1.png?alt=media",
+//     "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Fphotos%20app%2Fproject-image-2.png?alt=media",
+//     "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Fphotos%20app%2Fproject-image-3.png?alt=media"
+//   ],
+//   technologies :[{
+//     icon : "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Fphotos%20app%2Fproject-technology-1.svg?alt=media",
+//     name : 'Java'
+//   },{
+//     icon : "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Fphotos%20app%2Fproject-technology-2.svg?alt=media",
+//     name : 'Glide'
+//   }
 
-//  console.log("manageRealtimeDatabase => Writing current page data " + getCurrentPageDatabaseReference());
-//  writeCurrentPageData(projectsModel);
+// ],
+//   features : ["Responsive UI", "One Hand Friendly", "Caching", "User Centric"],
+//   isDarken : true
+// }
+
+
+//  const projectModel = new ProjectModel(project1); 
+//  const projectModel2 = new ProjectModel(project2);
+//  const projectModel3 = new ProjectModel(project3);
+//  const projects = [projectModel, projectModel2, projectModel3];
+//  const projectsData = {
+//    name: "projects",
+//    projects: projects
+//  };
+
+//  setCurrentPage("projects");
+
+//  const projectsModel = new ProjectsModel(projectsData);
+
+//   console.log("manageRealtimeDatabase => Writing current page data " + getCurrentPageDatabaseReference());
+//   writeCurrentPageData(projectsModel);
 

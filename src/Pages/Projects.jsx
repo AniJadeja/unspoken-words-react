@@ -4,6 +4,7 @@ import ProjectRow from '../Components/ProjectRow/ProjectRow'
 import { getCurrentPageData } from '../firebase/manageRealtimeDatabase.mjs'
 import ButtonPrimary from '../Components/ButtonPrimary/ButtonPrimary';
 import Footer from '../Components/Footer/Footer';
+import ScrollButton from '../Components/ScrollButton/ScrollButton';
 
 const Projects = () => {
 
@@ -33,6 +34,7 @@ const Projects = () => {
           <ButtonPrimary text="My Avocations" path="avocations" variant="textBordered" border={true} />
         </div>
         <Footer home={false} />
+        <ScrollButton />
       </div>
     </AnimatedPage>
   )

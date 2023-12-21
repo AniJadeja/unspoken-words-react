@@ -16,6 +16,7 @@ import { DotLottiePlayer } from '@dotlottie/player-component';
 import AboutMeModel from '../models/AboutMeModel';
 import { getCurrentPageData } from '../firebase/manageRealtimeDatabase.mjs';
 import { set } from 'firebase/database';
+import ScrollButton from '../Components/ScrollButton/ScrollButton';
 
 const AboutMe = () => {
 
@@ -348,6 +349,7 @@ const AboutMe = () => {
           </div>
         </article>
         <Footer home={false} />
+        <ScrollButton />
       </section>
 
     </AnimatedPage>
