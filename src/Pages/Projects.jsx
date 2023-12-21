@@ -4,13 +4,10 @@ import ProjectRow from '../Components/ProjectRow/ProjectRow'
 import { getCurrentPageData } from '../firebase/manageRealtimeDatabase.mjs'
 import ButtonPrimary from '../Components/ButtonPrimary/ButtonPrimary';
 import Footer from '../Components/Footer/Footer';
-import { set } from 'firebase/database';
 
 const Projects = () => {
 
   const [projects, setProjects] = useState([])
-  const [ scrolled, setScrolled ] = useState(0);
-
   useEffect(() => {
     try {
       getCurrentPageData().then((snapshot) => {
