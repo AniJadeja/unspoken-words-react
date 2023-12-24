@@ -1,8 +1,8 @@
 import {ref, onValue, set} from "firebase/database";
 import { getCurrentPage, setCurrentPage } from "../utils/CommonPrefs.mjs";
 import { database } from "./firebaseConfig.js";
-import ProjectModel from "../models/ProjectModel.js";
-import ProjectsModel from "../models/ProjectsModel.js";
+
+
 
 function getCurrentPageDatabaseReference() {
   return ref(database, getCurrentPage()+'/');
@@ -48,90 +48,136 @@ function updateCurrentPageData(data) {
 export { writeCurrentPageData, getCurrentPageData, updateCurrentPageData };
 
 
-// // ************* ProjectsModel  ************* //
+// // ************* AvocationsModel  ************* //
 
 
-// const project1 = {
-//   name: 'Unspoken Words',
-//   description: 'Project “Unspoken Words” is a portfolio website that represents my self to the best without meeting me. This website is a combination of my thoughts and ideology I follow, while keeping the information as minimal as possile. I designed this website to be a full scale project where this could have been a product itself. This project is connected with Google Firebase Realtime database to support the dynamic nature of the data. As I like to work on UI Design, I have created a perfect blend of my belief and learning. The aim of this project is to lead users to focus on who I am and what I can do without any distractions. This project engages users by providing necessary information with subtle animations to make it interesting enough.',
-//   images: [
-//     "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Funspoken%20words%2Fproject-image-1.png?alt=media", 
-//     "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Funspoken%20words%2Fproject-image-2.png?alt=media", 
-//     "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Funspoken%20words%2Fproject-image-3.png?alt=media"
-//   ],
-//   technologies :[{
-//     icon : "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Funspoken%20words%2Fproject-technology-1.svg?alt=media",
-//     name : 'Firebase'
-//   },{
-//     icon : "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Funspoken%20words%2Fproject-technology-2.svg?alt=media",
-//     name : 'React JS'
-//   }],
-//   features : ["User Centric", "Responsive", "Dynamic", "Minimalistic"],
-//   isDarken : true
-// }
-// const project2 = {
-//   name: 'Trip Wiz',
-//   description: "Project 'Trip Wiz' represents my most ambitious endeavor, constantly evolving with an intuitive UI and a robust programmed server—indeed, a full-scale product. While the current version may not be feature-packed, it is in capable hands for incremental improvements. Designed for scalability, it possesses dynamic capabilities to stand alone as a product. Supported by a database and a variety of APIs, the server is coded in Node.js, a favored choice among developers for its simplicity. The project's goal is to furnish users with minimal data-required itineraries for their desired destinations. Users input Place, Dates, and expectations, processed by OpenAI, resulting in personalized itineraries. The frontend utilizes ReactJS, Redux, and axios, while the backend relies on Node.js, Express.js, Firebase authentication, Firebase database, Firebase Firestore, and the OpenAI API to facilitate seamless project operations.",
-//   images: [
-//     "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Ftrip%20wiz%2Fproject-image-1.png?alt=media",
-//     "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Ftrip%20wiz%2Fproject-image-2.png?alt=media",
-//     "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Ftrip%20wiz%2Fproject-image-3.png?alt=media"
-//   ],
-//   technologies :[{
-//     icon : "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Ftrip%20wiz%2Fproject-technology-1.svg?alt=media",
-//     name : 'Node JS'
-//   },{
-//     icon : "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Ftrip%20wiz%2Fproject-technology-2.svg?alt=media",
-//     name : 'Open AI'
+// const imagesObj = {
+//   img1: {
+//     src: "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/avocations%2Fphotography%20photos%2Fimg1.png?alt=media",
+//     alt: 'showcase img-1',
+//     style: {
+//       objectFit: 'cover',
+//       width: '552px',
+//       height: '189px'
+//     }
 //   },
-//   {
-//     icon : "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Ftrip%20wiz%2Fproject-technology-3.svg?alt=media",
-//     name : 'React JS'
+//   img2: {
+//     src: "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/avocations%2Fphotography%20photos%2Fimg2.png?alt=media",
+//     alt: 'showcase img-2',
+//     style: {
+//       objectFit: 'cover',
+//       width: '374px',
+//       height: '189px'
+//     }
+//   },
+//   img3: {
+//     src: "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/avocations%2Fphotography%20photos%2Fimg3.png?alt=media",
+//     alt: 'showcase img-3',
+//     style: {
+//       objectFit: 'cover',
+//       width: '129px',
+//       height: '189px '
+//     }
+//   },
+//   img4: {
+//     src: "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/avocations%2Fphotography%20photos%2Fimg4.png?alt=media",
+//     alt: 'showcase img-4',
+//     style: {
+//       objectFit: 'cover',
+//       width: '374px',
+//       height: '189px'
+//     }
+//   },
+//   img5: {
+//     src: "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/avocations%2Fphotography%20photos%2Fimg5.png?alt=media",
+//     alt: 'showcase img-5',
+//     style: {
+//       objectFit: 'cover',
+//       width: '420px',
+//       height: '189px'
+//     }
+//   },
+//   img6: {
+//     src: "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/avocations%2Fphotography%20photos%2Fimg6.png?alt=media",
+//     alt: 'showcase img-6',
+//     style: {
+//       objectFit: 'cover',
+//       width: '250px',
+//       height: '189px'
+//     }
 //   }
+// }
 
-// ],
-//   features : ["Full Scale Project", "Responsive", "Dynamic", "Scalable"],
-//   isDarken : false
+
+// const imagesObj2 = {
+
+//   img1: {
+//     src: "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/avocations%2Fpoetry%20photos%2Flines-1.png?alt=media&token=ad6d98c9-8e5d-40a2-a9c7-241053735ad0",
+//     alt: 'showcase img-1',
+//     style: {
+//       width: '335px',
+//       height: '189px'
+//     }
+//   },
+//   img2: {
+//     src: "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/avocations%2Fpoetry%20photos%2Flines-2.png?alt=media&token=ad6d98c9-8e5d-40a2-a9c7-241053735ad0",
+//     alt: 'showcase img-2',
+//     style: {
+//       width: '287px',
+//       height: '189px'
+//     }
+//   },
+//   img3: {
+//     src: "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/avocations%2Fpoetry%20photos%2Flines-3.png?alt=media&token=ad6d98c9-8e5d-40a2-a9c7-241053735ad0",
+//     alt: 'showcase img-3',
+//     style: {
+//       width: '336px',
+//       height: '189px'
+//     }
+//   },
+//   img4: {
+//     src: "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/avocations%2Fpoetry%20photos%2Flines-4.png?alt=media&token=ad6d98c9-8e5d-40a2-a9c7-241053735ad0",
+//     alt: 'showcase img-4',
+//     style: {
+//       width: '348px',
+//       height: '189px' 
+//     }
+//   },
+//   img5: {
+//     src: "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/avocations%2Fpoetry%20photos%2Flines-5.png?alt=media&token=ad6d98c9-8e5d-40a2-a9c7-241053735ad0",
+//     alt: 'showcase img-5',
+//     style: {
+//       width: '337px',
+//       height: '189px'
+//     }
+//   },
+//   img6: {
+//     src: "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/avocations%2Fpoetry%20photos%2Flines-6.png?alt=media&token=ad6d98c9-8e5d-40a2-a9c7-241053735ad0",
+//     alt: 'showcase img-6',
+//     style: {
+//       width: '336px',
+//       height: '189px'
+//     }
+//   }
 // }
 
 
 
 
-
-// const project3 = {
-//   name: 'Photos App',
-//   description: "The 'Photos App' showcases my Android coding proficiency, marking one of my initial forays into Android development. Effectively, it retrieves images from the user's device, emphasizing a seamless, one-handed user experience. Prioritizing accessibility, the UI adheres to one-handed principles, ensuring responsiveness and user intuitiveness. Developed in Java, the project leverages the Glide library for efficient image loading, with automatic caching minimizing subsequent load times after the initial heavy processing. By proactively addressing issues, this app enhances user experience, exemplifying my commitment to user-centric design and efficient Android development.",
-//   images: [
-//     "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Fphotos%20app%2Fproject-image-1.png?alt=media",
-//     "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Fphotos%20app%2Fproject-image-2.png?alt=media",
-//     "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Fphotos%20app%2Fproject-image-3.png?alt=media"
-//   ],
-//   technologies :[{
-//     icon : "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Fphotos%20app%2Fproject-technology-1.svg?alt=media",
-//     name : 'Java'
-//   },{
-//     icon : "https://firebasestorage.googleapis.com/v0/b/unspoken-words-r.appspot.com/o/projects%2Fphotos%20app%2Fproject-technology-2.svg?alt=media",
-//     name : 'Glide'
-//   }
-
-// ],
-//   features : ["Responsive UI", "One Hand Friendly", "Caching", "User Centric"],
-//   isDarken : true
+// const avocations = {
+//   name: 'avocations',
+//   introParagraph: 'A person’s interests can change drastically with time and it can affect his/her personality as well. One thing remains the same. No matter the person’s situation is, they always have some dreams and that dreams provides the backbone for developing different hobbies. Here are my hobbies which I am proud to have.',
+//   photographyPara: "Photography is one of the key factor in my life. Photos are the illustration or the combination of the colors which explains the same thing to everyone without needing to explain it. A saying 'A picture is worth a thousand words' is the best example for this comes to my mind.",
+//   photographyImages: imagesObj,
+//   poetryPara: "Poetry is one of those arts which is very hard to understand. Understanding words and carefully arranging them is an art. Sometimes some lines conveys deepest meaning of life and that is a true art. I am not a poet but I love to read and write poetry. So, this work is a collection of my favorite lines which I have written or have collected from different sources.",
+//   poetryImages: imagesObj2
 // }
 
 
-//  const projectModel = new ProjectModel(project1); 
-//  const projectModel2 = new ProjectModel(project2);
-//  const projectModel3 = new ProjectModel(project3);
-//  const projects = [projectModel, projectModel2, projectModel3];
-//  const projectsData = {
-//    name: "projects",
-//    projects: projects
-//  };
 
-//  setCurrentPage("projects");
+//   setCurrentPage("avocations");
 
-//  const projectsModel = new ProjectsModel(projectsData);
+//   const projectsModel = new AvocationsModel(avocations);
 
 //   console.log("manageRealtimeDatabase => Writing current page data " + getCurrentPageDatabaseReference());
 //   writeCurrentPageData(projectsModel);
