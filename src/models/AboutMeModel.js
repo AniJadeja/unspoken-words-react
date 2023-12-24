@@ -129,4 +129,4 @@ function createAboutMeModel(data) {
 
 }
 
-module.exports = AboutMeModel;
+export default AboutMeModel;
