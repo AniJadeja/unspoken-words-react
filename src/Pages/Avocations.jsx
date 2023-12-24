@@ -96,7 +96,7 @@ const Avocations = () => {
           </article>
           <article id='photographyGallery' className='grid lg:grid-cols-[30%_70%] mb-12'>
             <div className='flex mb-12 lg:mb-0'>
-              <img src={ArtsGallery} alt='arts gallery' className='m-auto w-[40%] lg:w-[60%] 2xl:[70%] max-w-[70%]' />
+              <img src={ArtsGallery} alt='arts gallery' className='lg:m-auto 2xl:mr-0 xl:ml-auto sm:m-auto w-[40%] lg:w-[60%] 2xl:[70%] max-w-[70%]' />
             </div>
             <div className='lg:-mr-2' >
 
@@ -116,7 +116,7 @@ const Avocations = () => {
               <ShowCaseGrid images={avocationsData ? avocationsData.poetryImages : null} isRightAligned={false} screenSize={availableWidth} />
             </div>
             <div className='flex mb-12 lg:mb-0 order-1 lg:order-2'>
-              <img src={LinesGallery} alt='arts gallery' className='lg:m-auto xl:ml-0 xl:mr-auto sm:m-auto w-[40%] lg:w-[60%] 2xl:[70%] max-w-[70%] -rotate-[58deg] lg:rotate-0' />
+              <img src={LinesGallery} alt='arts gallery' className='lg:m-auto 2xl:ml-0 xl:mr-auto sm:m-auto w-[40%] lg:w-[60%] 2xl:[70%] max-w-[70%] -rotate-[58deg] lg:rotate-0' />
             </div>
           </article>
 
