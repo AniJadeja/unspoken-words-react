@@ -87,7 +87,7 @@ const Avocations = () => {
           </article>
 
           <article id='photographyArticle' className='px-10 lg:px-20 xl:px-40 font-inter tracking-[2px] text-justify mb-12'>
-            <p className='font-reef text-[var(--color-primary-accent)] lg:text-xl tracking-[4px] sm:text-lg xl:text-2xl text-left min-w-fit mt-10 lg:mt-0 align-center mb-12'>Photography {window.innerWidth}</p>
+            <p className='font-reef text-[var(--color-primary-accent)] lg:text-xl tracking-[4px] sm:text-lg xl:text-2xl text-left min-w-fit mt-10 lg:mt-0 align-center mb-12'>Photography</p>
             <p id='photographyText' className='text-xs sm:text-sm tracking-[2px]'>
               {
                 avocationsData ? avocationsData.photographyPara : null
