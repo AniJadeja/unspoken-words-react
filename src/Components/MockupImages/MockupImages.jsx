@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './MockupImages.css'
 import './Animation.css'
 
 const MockupImages = ({ images, isTwoColumnView, isDarken }) => {
-  const widthSubstraction = isTwoColumnView ? 50 : 77;
-  const imageWidth = window.innerWidth - ((widthSubstraction * window.innerWidth) / 100);
-  const imageHeight = ((45 * imageWidth) / 100); // image height and width is set dynamically to support single column view and double column view
-  const imageTravelHeight = ((52 * imageWidth) / 100); //sets height of the outer div, so the travelling div would not affect other divs. (Use pesticide to visualize it)
 
+
+  const [widthSubstraction, setWidthSubstraction] = useState(0);
+  const [imageWidth, setImageWidth] = useState(0);
+  const [imageHeight, setImageHeight] = useState(0);
   const [isHovered, setHovered] = useState(false);
+
+  useEffect(() => {
+  
+    setWidthSubstraction(isTwoColumnView ? 50 : 77);
+    setImageWidth(window.innerWidth - ((widthSubstraction * window.innerWidth) / 100));
+    setImageHeight(((45 * imageWidth) / 100));
+  
+  
+  });
+
+  
 
   const handleMouseEnter = () => {
     setHovered(true);

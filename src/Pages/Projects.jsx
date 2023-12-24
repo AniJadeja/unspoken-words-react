@@ -17,7 +17,7 @@ const Projects = () => {
     } catch (error) {
       console.error(error);
     }
-  }, [projects])
+  }, [])
 
 
 
