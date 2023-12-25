@@ -6,6 +6,10 @@ class AvocationsModel {
         this.photographyImages = data.photographyImages;
         this.poetryPara = data.poetryPara;
         this.poetryImages = data.poetryImages;
+        this.gamingPara = data.gamingPara;
+        this.gamingImage = data.gamingImage;
+        this.animePara = data.animePara;
+        this.animeImage = data.animeImage;
     }
 
    
