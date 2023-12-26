@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './MockupImages.css'
 import './Animation.css'
+import { getAvailableWidth } from '../../index.js';
 
 const MockupImages = ({ images, isTwoColumnView, isDarken }) => {
 
@@ -11,13 +12,13 @@ const MockupImages = ({ images, isTwoColumnView, isDarken }) => {
   const [isHovered, setHovered] = useState(false);
 
   useEffect(() => {
-  
+    const availableWidth = getAvailableWidth();
+    console.log("Available width " + availableWidth)
     setWidthSubstraction(isTwoColumnView ? 50 : 77);
-    setImageWidth(window.innerWidth - ((widthSubstraction * window.innerWidth) / 100));
+    setImageWidth(availableWidth - ((widthSubstraction * availableWidth) / 100));
+    console.log("Image width " + imageWidth)
     setImageHeight(((45 * imageWidth) / 100));
-  
-  
-  });
+  },[imageWidth]);
 
   
 

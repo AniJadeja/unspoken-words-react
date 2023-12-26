@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { availableWidth } from '..';
+import { availableWidth, getAvailableWidth } from '..';
 import DottedDiv from '../Components/DottedDiv/DottedDiv';
 import ButtonPrimary from '../Components/ButtonPrimary/ButtonPrimary';
 import AnimatedPage from '../Components/Animated/AnimatedPage';
@@ -24,7 +24,8 @@ const Home = () => {
 
 
 
-  const avialableWidth = useRef(window.innerWidth);
+  const avialableWidth = useRef(getAvailableWidth());
+  console.log("Available width " + avialableWidth.current)
   const avialableHeight = useRef(window.innerHeight);
 
   const calculateHeights = () => {
@@ -39,12 +40,12 @@ const Home = () => {
 
 
       // Calculate section height by subtracting Navigationbar and footer heights
-      const newSectionHeight = `calc(100vh - ${navBarHeight}px - ${footerHeight}px - 65px)`;
+      const newSectionHeight = `calc(100vh - 194px)`;
 
       // Calculate article height by subtracting footer height
-      const newArticleHeight = `calc(${newSectionHeight} - ${footerHeight}px)`;
+      const newArticleHeight = `calc(${newSectionHeight} - 64px)`;
 
-      const newSubArticleHeight = `calc(${newSectionHeight} - ${footerHeight}px - 32px)`;
+      const newSubArticleHeight = `calc(${newSectionHeight} - 96px)`;
      // console.log("Available width " + availableWidth.current )
 
       if(avialableWidth.current<359){
@@ -75,12 +76,11 @@ const Home = () => {
 
 
   useEffect(() => {
-    // Run on initial mount
     calculateHeights();
     getCurrentPageData().then((data) => {
       setDisplayPicture(data.displayPictureUrl);
     })
-  }, []);
+  }, [imageHeight.current,window.innerWidth,window.innerHeight]);
 
   return (
     <AnimatedPage>
@@ -93,7 +93,7 @@ const Home = () => {
           style={{ minHeight: articleHeight }}>
           {/* Left and Right Article Divs */}
           <div className={(avialableWidth.current < 768) ? 'mx-5 grid grid-cols-1 gap-4' : 'grid grid-cols-2 gap-4 mx-5'}>
-            <div className={'p-2 lg:order-last align-center sm:-mt-16 sm2:-mt-12 sm3:-mt-10 sm4:-mt-14 lg:-mt-8'} id='leftArticle' style={{height:imageHeight.current}}>
+            <div className={'p-2 lg:order-last align-center sm:-mt-16 sm2:-mt-12 sm3:-mt-10 sm4:-mt-14 lg:my-auto'} id='leftArticle' style={{height:imageHeight.current}}>
               <img  className='' height={imageHeight.current} src={displayPicture} width="auto" style={{ objectFit: "cover", mixBlendMode: 'lighten', maxHeight: `${imageHeight.current}px` }} />
             </div>
             <div  className={(avialableWidth.current < 768) ?
@@ -118,15 +118,14 @@ const Home = () => {
                 <DottedDiv className="align-center" height={dottedDivisionHeight} width={dottedDivisionWidth } />
                 <div className='sm:-mt-4 sm2:mt-0'>
                 <ButtonPrimary text="Know Me More" path="aboutme" variant="textBordered" border={false}/>
-           
                 </div>
-                
-               
               </div>
             </div>
           </div>
         </article>
-        <Footer home={true}/>
+          <div className='max-w-[var(--max-width)] mx-auto absolute bottom-0 w-full'>
+        <Footer home={false}/>
+        </div>
       </section>
     </AnimatedPage>
   );

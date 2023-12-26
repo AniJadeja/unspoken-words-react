@@ -15,7 +15,7 @@ const NavigationBar = () => {
   const closeMobileMenu = () => setIsClosed(false); 
 
   return (
-    <section id="middleNavigationBar">
+    <section id="middleNavigationBar" className="max-w-[var(--max-width)]">
       <nav id="desktopNavigation" className="mt-10 mb-6">
         <div className="nav-header align-center">
           <Link to="/" className="flex" onClick={

@@ -25,11 +25,16 @@ export const availableWidth = window.innerWidth;
 export const availableHeight = window.innerHeight;
 
 
+export const getAvailableWidth = () => {
+  const availableWidth = window.innerWidth;
 
-export const getAvailableWidth = () =>{
-  console.log("returning  ", window.innerWidth, " as available width..");
-  return window.innerWidth;
-}
+  if (availableWidth > 1920) {
+    return 1920;
+  } else {
+    return availableWidth;
+  }
+};
+
 
 
 export const getAvailableHeight = () =>{
@@ -49,8 +54,10 @@ let navEntries = [
 const AppLayout = () => {
   return (
     <>
-      <NavigationBar/>
-      <Outlet />
+      <div className="align-center">
+        <NavigationBar />
+      </div>
+        <Outlet />
     </>
   );
 }

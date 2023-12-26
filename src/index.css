@@ -24,7 +24,8 @@
   --color-shadow-white : rgba(132, 132, 132, 0.1);
 
   --color-accent-transparent : rgba(255, 174, 98, 0.0);
-
+  
+  --max-width : 1920px;
 }
 
 *{margin:0 ;
