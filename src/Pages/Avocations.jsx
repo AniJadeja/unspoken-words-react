@@ -5,7 +5,7 @@ import ArtsGallery from '../assets/arts-gallery.svg'
 import LinesGallery from '../assets/lines-gallery.svg'
 import AvocationsModel from '../models/AvocationsModel'
 
-import { availableWidth } from '..'
+import { getAvailableWidth } from '..'
 import { getCurrentPageData } from '../firebase/manageRealtimeDatabase.mjs'
 import ScrollButton from '../Components/ScrollButton/ScrollButton'
 import ButtonPrimary from '../Components/ButtonPrimary/ButtonPrimary'
@@ -20,7 +20,7 @@ const Avocations = () => {
   const [isGamingImageHovered, setIsGamingImageHovered] = useState(false)
   const [isAnimeImageHovered, setIsAnimeImageHovered] = useState(false)
   const [isSmallerScreen, setIsSmallerScreen] = useState(false)
-
+  const availableWidth = getAvailableWidth()
 
   const handleGamingImageHover = () => {
     setIsGamingImageHovered(true)

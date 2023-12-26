@@ -30,6 +30,7 @@ const AnimatedPage = ({ children }) => {
       animate="animate"
       exit="exit"
       transition={{ duration: 0.1 }}
+      className='max-w-[var(--max-width)] mx-auto'
     >
       {children}
     </motion.div>
