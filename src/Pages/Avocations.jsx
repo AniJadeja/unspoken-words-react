@@ -131,7 +131,7 @@ const Avocations = () => {
             }
           </p>
         </article>
-        <article id='photographyGallery' className='grid lg:grid-cols-[30%_70%] mb-12'>
+        <article id='photographyGallery' className='grid lg:grid-cols-[30%_70%] mb-12 overflow-x-hidden'>
           <div className='flex mb-12 lg:mb-0'>
             <img src={ArtsGallery} alt='arts gallery' className='lg:m-auto 2xl:mr-0 xl:ml-auto sm:m-auto w-[40%] lg:w-[60%] 2xl:[70%] max-w-[70%]' />
           </div>
