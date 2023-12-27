@@ -6,8 +6,7 @@ import AnimatedPage from '../Components/Animated/AnimatedPage';
 import Footer from '../Components/Footer/Footer';
 import { getCurrentPageData } from '../firebase/manageRealtimeDatabase.mjs';
 import InputText from '../Components/InputText/InputText';
-import { set } from 'firebase/database';
-import axios from 'axios';
+
 
 const Contact = () => {
   const [sectionHeight, setSectionHeight] = useState('auto'); // Initialize section height as 'auto'

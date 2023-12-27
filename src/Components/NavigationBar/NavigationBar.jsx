@@ -165,14 +165,13 @@ const NavigationBar = () => {
               </li>
               <li className="nav-item-mobile align-center">
                 <NavLink
-                  to="/Resume"
+                  to="/Contact"
                   className={({ isActive }) => {
                     if (isActive) {
-                     setCurrentPage("home");
+                     setCurrentPage("contact");
                     }
                     return isActive ? "activated" : "";
                   }}
-
                 >Contact</NavLink>
               </li>
             </ul>
