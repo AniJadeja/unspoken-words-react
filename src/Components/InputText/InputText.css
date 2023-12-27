@@ -1,0 +1,16 @@
+.InputText{
+    width: 100%;
+    height: 64px;
+    border: 3px solid var(--color-primary-gray);
+    border-radius: 5px;
+    padding: 0 10px 5px 10px;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    background-color: var(--color-primary-black);
+    &:focus{
+        border: 3px solid var(--color-primary-white);
+    }
+    transition: all 0.3s ease-in-out;
+}

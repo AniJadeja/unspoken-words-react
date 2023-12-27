@@ -16,8 +16,8 @@ import Projects from './Pages/Projects';
 import NoPage from './Pages/NoPage';
 import NavigationBar from "./Components/NavigationBar/NavigationBar";
 import ReactDOM from 'react-dom/client';
-import Resume from './Pages/Resume'
 import Home from "./Pages/Home";
+import Contact from "./Pages/Contact";
 
 // Define constants for the project name and available screen dimensions
 export const projectName = "Unspoken Words";
@@ -47,7 +47,7 @@ let navEntries = [
   { path: "/aboutme", element: <AboutMe/> }, // About Me page
   { path: "/avocations", element: <Avocations /> }, // Avocations page
   { path: "/projects", element: <Projects /> },     // Projects page
-  { path: "/resume", element: <Resume /> }          // Resume page
+  { path: "/contact", element: <Contact /> }          // Resume page
 ];
 
 // Define the layout of the app, which includes a navigation bar and an outlet for rendering content
