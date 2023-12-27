@@ -77,15 +77,15 @@ const NavigationBar = () => {
             </li>
             <li className="nav-item">
               <NavLink
-                to="/Resume"
+                to="/Contact"
                 className={({ isActive }) => {
                   if (isActive) {
-                   setCurrentPage("resume");
+                   setCurrentPage("contact");
                   }
                   return isActive ? "activated" : "";
                 }}
 
-              >Resume</NavLink>
+              >Contact</NavLink>
             </li>
           </ul>
           
@@ -168,12 +168,12 @@ const NavigationBar = () => {
                   to="/Resume"
                   className={({ isActive }) => {
                     if (isActive) {
-                     setCurrentPage("resume");
+                     setCurrentPage("home");
                     }
                     return isActive ? "activated" : "";
                   }}
 
-                >Resume</NavLink>
+                >Contact</NavLink>
               </li>
             </ul>
           </div>
