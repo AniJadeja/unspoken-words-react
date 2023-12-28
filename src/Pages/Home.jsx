@@ -5,11 +5,14 @@ import ButtonPrimary from '../Components/ButtonPrimary/ButtonPrimary';
 import AnimatedPage from '../Components/Animated/AnimatedPage';
 import Typed from 'react-typed';
 import Footer from '../Components/Footer/Footer';
+import { useNavigate } from 'react-router-dom'
+import ReactDOM from 'react-dom';
 import { getCurrentPageData} from '../firebase/manageRealtimeDatabase.mjs';
 
 
 
 const Home = () => {
+  const navigate = useNavigate();
   const [sectionHeight, setSectionHeight] = useState('auto'); // Initialize section height as 'auto'
   const [articleHeight, setArticleHeight] = useState('auto'); // Initialize article height as 'auto'
   const [subArticleHeight, setSubArticleHeight] = useState('auto'); // Initialize sub article height as 'auto'
@@ -25,7 +28,6 @@ const Home = () => {
 
 
   const avialableWidth = useRef(getAvailableWidth());
-  console.log("Available width " + avialableWidth.current)
   const avialableHeight = useRef(window.innerHeight);
 
   const calculateHeights = () => {
@@ -79,7 +81,9 @@ const Home = () => {
     calculateHeights();
     getCurrentPageData().then((data) => {
       setDisplayPicture(data.displayPictureUrl);
-    })
+    }).catch((error) => {
+      navigate('/error');
+    });
   }, [imageHeight.current,window.innerWidth,window.innerHeight]);
 
   return (

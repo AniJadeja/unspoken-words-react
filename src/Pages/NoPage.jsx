@@ -7,16 +7,17 @@ import professional from '../assets/lottie-icons/error.lottie'
 import ButtonPrimary from '../Components/ButtonPrimary/ButtonPrimary';
 const NoPage = () => {
 
-  const error = useRouteError();
-  const { status, message } = error;
-  const [ notFound, setNotFound ] = useState(false);
-  console.log(
-    error
-  );
+  const error = useRouteError() || { status: 500, message: 'Something went wrong' };
+  const { status } = error;
+
+  
+  const [diplayMessage, setDisplayMessage] = useState('Something went wrong :(');
+  const [helpMessage, setHelpMessage] = useState('Don\'t worry !! I am dedicatedly working Smart to solve your problems...');
 
   useEffect(() => {
     if(status === 404) {
-      setNotFound(true);
+      setDisplayMessage('Looks like you are lost..')
+      setHelpMessage('Don\'t worry !! just go to home...')
     }
   }, [status])
 
@@ -25,11 +26,7 @@ const NoPage = () => {
       <div className='text-white min-h-full mt-24'>
 
         <div id="error-page" className='grid grid-cols-1 lg:grid-cols-3'>
-        <div className='align-center first-letter:'>
-        {
-          notFound ? (<p className='font-reef text-[var(--color-primary-white)] lg:text-xl tracking-[4px] sm:text-lg xl:text-2xl text-left min-w-fit mt-10 lg:mt-0 '>Looks like you are lost.. </p>) : (<p className='font-reef text-[var(--color-primary-white)] lg:text-xl tracking-[4px] sm:text-lg xl:text-2xl text-left min-w-fit mt-10 lg:mt-0  '>Something went wrong :( </p>)
-        }
-
+        <div className='align-center first-letter:'><p className='font-reef text-[var(--color-primary-white)] lg:text-xl tracking-[4px] sm:text-lg xl:text-2xl text-left min-w-fit mt-10 lg:mt-0 ml-10 mr-10 lg:ml-0 lg:mr-0  '>{diplayMessage} </p>
         </div>
        
         <div className='align-center'>
@@ -44,9 +41,7 @@ const NoPage = () => {
                   </dotlottie-player>
         </div>
         <div className='align-center -mt-10 lg:mt-0'>
-        {
-          notFound ? (<p className='font-reef text-[var(--color-primary-white)] lg:text-xl tracking-[4px] sm:text-lg xl:text-2xl text-left min-w-fit  lg:mt-0 mr-10 lg:mr-20 ml-10 lg:ml-0'>Don't worry !! just go to home...</p>) : (<p className='font-reef text-[var(--color-primary-white)] lg:text-xl tracking-[4px] sm:text-lg xl:text-2xl text-left min-w-fit  ml-10 lg:ml-0 mr-10 lg:mr-20'>Don't Worry !! <p className='text-sm md:text-base font-inter leading-loose tracking-[2px] text-justify mt-4'> I am dedicatedly working Smart to solve your problems...</p></p>)
-         }
+          <p className='font-reef text-[var(--color-primary-white)] lg:text-xl tracking-[4px] sm:text-lg xl:text-2xl text-left min-w-fit  ml-10 lg:ml-0 mr-10 lg:mr-20'>{helpMessage}</p>
          </div>
         </div>
         <div className='align-center mt-20'>

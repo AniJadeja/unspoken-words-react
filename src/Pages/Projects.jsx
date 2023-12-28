@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import AnimatedPage from '../Components/Animated/AnimatedPage'
+import { useNavigate } from 'react-router-dom'
 import ProjectRow from '../Components/ProjectRow/ProjectRow'
 import { getCurrentPageData } from '../firebase/manageRealtimeDatabase.mjs'
 import ButtonPrimary from '../Components/ButtonPrimary/ButtonPrimary';
@@ -7,13 +8,16 @@ import Footer from '../Components/Footer/Footer';
 import ScrollButton from '../Components/ScrollButton/ScrollButton';
 
 const Projects = () => {
-
+  const navigate = useNavigate();
   const [projects, setProjects] = useState([])
   useEffect(() => {
     try {
       getCurrentPageData().then((snapshot) => {
         setProjects(snapshot.projects);
       })
+      .catch((error) => {
+        navigate('/error');
+      });
     } catch (error) {
       console.error(error);
     }

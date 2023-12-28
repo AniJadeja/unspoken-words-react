@@ -1,11 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { availableWidth, getAvailableWidth } from '..';
 import DottedDiv from '../Components/DottedDiv/DottedDiv';
 import ButtonPrimary from '../Components/ButtonPrimary/ButtonPrimary';
 import AnimatedPage from '../Components/Animated/AnimatedPage';
 import Footer from '../Components/Footer/Footer';
-import { getCurrentPageData } from '../firebase/manageRealtimeDatabase.mjs';
+import { getCurrentPageData, sendMessage } from '../firebase/manageRealtimeDatabase.mjs';
 import InputText from '../Components/InputText/InputText';
+import { getBlob } from 'firebase/storage';
+import axios from 'axios';
+import UserMessage from '../models/UserMessage';
 
 
 const Contact = () => {
@@ -21,7 +25,7 @@ const Contact = () => {
   const [message, setMessage] = useState('');
 
   const imageHeight = useRef(560);
-
+  const navigate = useNavigate();
 
 
   const handleEmailChange = (value) => {
@@ -38,7 +42,7 @@ const Contact = () => {
 
 
   const avialableWidth = useRef(getAvailableWidth());
-  console.log("Available width " + avialableWidth.current)
+  //console.log("Available width " + avialableWidth.current)
   const avialableHeight = useRef(window.innerHeight);
 
   const calculateHeights = () => {
@@ -68,6 +72,9 @@ const Contact = () => {
       else if (avialableWidth.current < 768) {
         imageHeight.current = ((avialableHeight.current * 50) / 100)
       }
+      else if (avialableWidth.current < 1024) {
+        imageHeight.current = ((avialableHeight.current * 60) / 100)
+      }
       else {
         imageHeight.current = ((avialableHeight.current * 70) / 100)
       }
@@ -86,13 +93,59 @@ const Contact = () => {
     getCurrentPageData().then((data) => {
       setResumePicture(data.resumePictureUrl);
       setResumeFileUrl(data.resumeFileUrl);
-    })
+    }).catch((error) => {
+      navigate('/error');
+    });
+
+    const userM = {
+      name: "Anirudhdhsinh Jadeja",
+      email: "Ajadeja3102@gmail.com",
+      message: "Hello, I am Anirudhdhsinh Jadeja. I am a full stack developer. I would like to work with you."
+    }
+    const message = new UserMessage(userM)
+    sendMessage(message).then((result) => {
+      console.log("message sending "+result)
+    }).catch((error) => {
+      console.log(error);
+    });
+
+
   }, []);
 
 
 
   const handleDownload = async () => {
-    window.open(resumeFileUrl);
+    // This can be downloaded directly:
+    try {
+      // Make an HTTP request to get the file as a blob
+      const response = await axios.get(resumeFileUrl, {
+        responseType: 'blob',
+      });
+  
+      // Create a blob from the response data
+      const blob = new Blob([response.data], { type: 'application/pdf' });
+  
+      // Create a link element
+      const link = document.createElement('a');
+  
+      // Set the href attribute with the blob URL
+      link.href = window.URL.createObjectURL(blob);
+  
+      // Set the download attribute with the desired filename
+      link.download = 'Resume_Anirudhdhsinh_Jadeja.pdf';
+  
+      // Append the link to the document
+      document.body.appendChild(link);
+  
+      // Trigger a click on the link to initiate the download
+      link.click();
+  
+      // Remove the link from the document
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error('Error downloading file:', error);
+    }
+   // window.open(resumeFileUrl);
   };
 
   return (
@@ -105,14 +158,15 @@ const Contact = () => {
           className='pt-14'
           style={{ minHeight: articleHeight }}>
           {/* Left and Right Article Divs */}
-          <div className={(avialableWidth.current < 768) ? 'mx-5 grid grid-cols-1 gap-4' : 'grid grid-cols-[60%_40%] gap-4 mx-5'}>
+          <div className={'mx-5 grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-[60%_40%] gap-4'}>
 
 
-            <div className={'py-10 px-4 align-center lg:my-auto flex-col'} id='leftArticle' style={{ height: availableWidth < 768 ? imageHeight.current / 1.2 : imageHeight.current, position: 'relative' }}>
-              <img className='' height={imageHeight.current} src={resumePicture} width="90%" style={{ objectFit: 'cover', objectPosition: 'center top', maxHeight: `${availableWidth < 768 ? imageHeight.current / 2 : imageHeight.current}px` }} />
+            <div className={'py-10 align-center lg:my-auto flex-col'} id='leftArticle' style={{ height: availableWidth < 768 ? imageHeight.current / 1.4 : imageHeight.current, position: 'relative' }}>
+              <img className=''  src={resumePicture} style={{ objectFit: 'cover', objectPosition: 'center top',
+            width : availableWidth <768 ? '100%' : '90%', maxHeight:availableWidth < 768 ? imageHeight.current / 1.4 : imageHeight.current }} />
 
               <button
-                className='lg:absolute lg:bottom-0 mx-auto transform lg:-translate-x-1/2 bg-[var(--color-primary-accent)] text-white rounded-md px-4 py-2 mt-4 hover:bg-[var(--color-primary-accent-hover)] transition-all duration-300 ease-in-out'
+                className='absolute bottom-[12%] lg:bottom-[22%] mx-auto my-auto transform bg-[var(--color-primary-accent)] text-white rounded-md px-4 py-2 mt-4 hover:bg-[var(--color-primary-accent-hover)] transition-all duration-300 ease-in-out'
                 onClick={handleDownload}
               >
                 Download Resume
@@ -122,16 +176,16 @@ const Contact = () => {
 
 
 
-            <div className={(avialableWidth.current < 768) ?
+            <div className={(avialableWidth.current < 1024) ?
               // Mobile CSS 
-              'text-[var(--color-primary-white)] p-2  mb-8'
+              'text-[var(--color-primary-white)] p-2 mt-8 mb-8'
               : // Desktop CSS 
-              ` text-[var(--color-primary-white)] p-2 align-center w-3/4`
+              ` text-[var(--color-primary-white)] p-2 align-center w-[95%]`
 
             }
               id='rightArticle'
 
-              style={{ height: (avialableWidth.current < 768) ? "fit-content" : subArticleHeight, minHeight: (avialableWidth.current < 768) ? "fit-content" : subArticleHeight }}>
+              style={{ height: (avialableWidth.current < 1024) ? "fit-content" : subArticleHeight, minHeight: (avialableWidth.current < 1024) ? "fit-content" : subArticleHeight }}>
 
 
               <div id='contactForm' className=' w-full'>

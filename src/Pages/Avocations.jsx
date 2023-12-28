@@ -9,12 +9,12 @@ import { getAvailableWidth } from '..'
 import { getCurrentPageData } from '../firebase/manageRealtimeDatabase.mjs'
 import ScrollButton from '../Components/ScrollButton/ScrollButton'
 import ButtonPrimary from '../Components/ButtonPrimary/ButtonPrimary'
-
+import { useNavigate } from 'react-router-dom'
 
 
 
 const Avocations = () => {
-
+  const navigate = useNavigate();
   const [multiplyFactor, setMultiplyFactor] = useState(1)
   const [avocationsData, setAvocationsData] = useState({})
   const [isGamingImageHovered, setIsGamingImageHovered] = useState(false)
@@ -105,9 +105,9 @@ const Avocations = () => {
       };
 
       setAvocationsData(new AvocationsModel(data))
-
-      //  / console.log(data)
-    })
+    }).catch((error) => {
+      navigate('/error');
+    });
   }, [multiplyFactor])
 
 
