@@ -17,9 +17,9 @@ import AboutMeModel from '../models/AboutMeModel';
 import { getCurrentPageData } from '../firebase/manageRealtimeDatabase.mjs';
 import { set } from 'firebase/database';
 import ScrollButton from '../Components/ScrollButton/ScrollButton';
-
+import { useNavigate } from 'react-router-dom';
 const AboutMe = () => {
-
+  const navigate = useNavigate();
 
   const [dottedDivWidth, setDottedDivWidth] = useState(250);
   const [dottedDivHeight, setDottedDivHeight] = useState(100);
@@ -44,7 +44,9 @@ const AboutMe = () => {
     }
     getCurrentPageData().then((data) => {
       setAboutMeModel(new AboutMeModel(data));
-    })
+    }).catch((error) => {
+      navigate('/error');
+    });
 
 
   }, [])

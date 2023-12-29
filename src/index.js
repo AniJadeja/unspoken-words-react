@@ -47,7 +47,8 @@ let navEntries = [
   { path: "/aboutme", element: <AboutMe/> }, // About Me page
   { path: "/avocations", element: <Avocations /> }, // Avocations page
   { path: "/projects", element: <Projects /> },     // Projects page
-  { path: "/contact", element: <Contact /> }          // Resume page
+  { path: "/contact", element: <Contact /> },
+  { path: "/error",element: <NoPage/>}          // Resume page
 ];
 
 // Define the layout of the app, which includes a navigation bar and an outlet for rendering content

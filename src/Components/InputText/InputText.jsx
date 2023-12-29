@@ -1,16 +1,26 @@
 import React from 'react'
 import './InputText.css'
 
-const InputText = ({placeholder, onInputChange}) => {
-
-
+const InputText = ({placeholder, onInputChange, isError,errorMessage, validator}) => {
+    const [isFocused, setIsFocused] = React.useState(false)
     const handleInput = (e) => {
         onInputChange(e.target.value)
     }
 
     return (
         <div>
-            <input placeholder={placeholder} className='InputText' onChange={handleInput}/>
+            <p className={ 'InputText_Error '}>&nbsp;{errorMessage}</p>
+            <input placeholder={placeholder} 
+            
+            className={
+                isFocused ? 
+                'InputText'
+                :isError ? ' error' :' InputText'} 
+            
+        
+            onChange={handleInput} onFocus={() => setIsFocused(true)}
+            
+            onBlur={(e) => {validator(e.target.value); setIsFocused(false)}} />
         </div>
     )
 }
