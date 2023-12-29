@@ -136,14 +136,19 @@ const Contact = () => {
 
       if (availableWidth.current < 359) {
         setDottedDivisionHeight(100);
+        console.log("width less than 359 : "+imageHeight.current);
       } else if (availableWidth.current < 560) {
         imageHeight.current = (availableHeight.current * 60) / 100;
+        console.log("width less than 560 : "+imageHeight.current);
       } else if (availableWidth.current < 768) {
         imageHeight.current = (availableHeight.current * 50) / 100;
+        console.log("width less than 768 : "+imageHeight.current);
       } else if (availableWidth.current < 1024) {
         imageHeight.current = (availableHeight.current * 60) / 100;
+        console.log("width less than 1024 : "+imageHeight.current);
       } else {
         imageHeight.current = (availableHeight.current * 70) / 100;
+        console.log("width greater than 1024 : "+imageHeight.current);
       }
 
       setSectionHeight(newSectionHeight);
@@ -160,7 +165,7 @@ const Contact = () => {
         setResumeFileUrl(data.resumeFileUrl);
       })
       .catch(() => navigate('/error'));
-  }, []);
+  }, [imageHeight.current]);
 
   const handleDownload = async () => {
     try {
@@ -187,8 +192,8 @@ const Contact = () => {
         </p>
         <article id='article' className='pt-14' style={{ minHeight: articleHeight }}>
           <div className={'mx-5 grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-[60%_40%] gap-4'}>
-            <div className={'py-10 align-center lg:my-auto flex-col'} id='leftArticle' style={{ height: availableWidth < 768 ? imageHeight.current / 1.4 : imageHeight.current, position: 'relative' }}>
-              <img className='' src={resumePicture} style={{ objectFit: 'cover', objectPosition: 'center top', width: availableWidth < 768 ? '100%' : '90%', maxHeight: availableWidth < 768 ? imageHeight.current / 1.4 : imageHeight.current }} />
+            <div className={'py-10 align-center lg:my-auto flex-col'} id='leftArticle' style={{ height: availableWidth.current < 768 ? imageHeight.current / 2 : imageHeight.current, position: 'relative' }}>
+              <img className='' src={resumePicture} style={{ objectFit: 'cover', objectPosition: 'center top', width: availableWidth.current < availableWidth.current < 768 ? '100%' : '90%', maxHeight: availableWidth.current < 768 ? imageHeight.current / 2 : imageHeight.current }} />
               <button
                 className='absolute bottom-[12%] lg:bottom-[22%] mx-auto my-auto transform bg-[var(--color-primary-accent)] text-white rounded-md px-4 py-2 mt-4 hover:bg-[var(--color-primary-accent-hover)] transition-all duration-300 ease-in-out'
                 onClick={handleDownload}
@@ -197,7 +202,7 @@ const Contact = () => {
               </button>
             </div>
             <div className={(availableWidth.current < 1024) ?
-              'text-[var(--color-primary-white)] p-2 mt-8 mb-8'
+              'text-[var(--color-primary-white)] p-2 mb-8'
               : ` text-[var(--color-primary-white)] p-2 align-center w-[95%]`}
               id='rightArticle'
               style={{ height: (availableWidth.current < 1024) ? "fit-content" : subArticleHeight, minHeight: (availableWidth.current < 1024) ? "fit-content" : subArticleHeight }}>
