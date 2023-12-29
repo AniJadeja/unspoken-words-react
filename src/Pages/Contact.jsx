@@ -71,35 +71,6 @@ const Contact = () => {
     else {
       setIsLoading(false);
     }
-
-
-    // if (name !== '' && email !== '' && message !== '') {
-    //   if (email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g)) {
-    //     if (message.length > 10) {
-    //       if (name.length > 3 && name.length < 50) {
-
-    //       }
-    //       else {
-    //         setIsNameError(true);
-    //         return;
-    //       }
-    //     }
-    //     else {
-    //       setIsMessageError(true);
-    //       return;
-    //     }
-    //   }
-    //   else {
-    //     setIsEmailError(true);
-    //     return;
-    //   }
-    // }
-    // else {
-    //   setIsNameError(true);
-    //   setIsEmailError(true);
-    //   setIsMessageError(true);
-    //   return;
-    // }
   }
 
   function validateEmail(email) {

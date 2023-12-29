@@ -22,10 +22,12 @@
   --color-secondary-gray: #b9b9b9;
   --color-menu-gray : #2e2e2e;
   --color-gradient-black : rgba(27,27,27,0.3);
+  --color-primary-overlay : rgba(27, 27, 27, 0.671);
   --color-gradient-white : rgba(255,255,255,0.1);
   --color-shadow-white : rgba(132, 132, 132, 0.1);
 
   --color-accent-transparent : rgba(255, 174, 98, 0.0);
+  
   
   --max-width : 1920px;
 }
