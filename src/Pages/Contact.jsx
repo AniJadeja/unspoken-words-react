@@ -188,7 +188,7 @@ const Contact = () => {
     <AnimatedPage>
       <section id='homePage' style={{ minHeight: sectionHeight }}>
         <p className='w-2 fixed lg:hidden bottom-32 right-3.5 opacity-60 text-center text-xs text-[var(--color-primary-white)]'>
-          Contact
+          C o n t a c t
         </p>
         <article id='article' className='pt-14' style={{ minHeight: articleHeight }}>
           <div className={'mx-5 grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-[60%_40%] gap-4'}>
