@@ -189,12 +189,11 @@ const Contact = () => {
           <div className={'mx-5 grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-[60%_40%] gap-4'}>
             <div className={'py-10 align-center lg:my-auto flex-col'} id='leftArticle' style={{ height: availableWidth < 768 ? imageHeight.current / 1.4 : imageHeight.current, position: 'relative' }}>
               <img className='' src={resumePicture} style={{ objectFit: 'cover', objectPosition: 'center top', width: availableWidth < 768 ? '100%' : '90%', maxHeight: availableWidth < 768 ? imageHeight.current / 1.4 : imageHeight.current }} />
-              <button
-                className='absolute bottom-[12%] lg:bottom-[22%] mx-auto my-auto transform bg-[var(--color-primary-accent)] text-white rounded-md px-4 py-2 mt-4 hover:bg-[var(--color-primary-accent-hover)] transition-all duration-300 ease-in-out'
-                onClick={handleDownload}
+              <p
+                className='absolute bottom-[12%] lg:bottom-[22%] mx-auto my-auto transform bg-[var(--color-primary-accent)] text-white rounded-md px-8 py-4 mt-4 text-center'
               >
-                Download Resume
-              </button>
+                Send a message to <br/> get my resume
+              </p> 
             </div>
             <div className={(availableWidth.current < 1024) ?
               'text-[var(--color-primary-white)] p-2 mt-8 mb-8'
