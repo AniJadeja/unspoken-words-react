@@ -35,7 +35,7 @@ const Projects = () => {
           const jsonProject = JSON.parse(stringProject);
           return (<ProjectRow project={jsonProject} />)
         })}
-        <div className='mb-10 lg:mb-20'>
+        <div className='mb-10 lg:mb-20 px-10'>
         <p className=' text-xs sm:text-base text-[var(--color-primary-white)]  tracking-[4px] align-center'>That is not all. Please checkout my git hub profile for more repositories.</p>
         <a href='https://www.github.com/AniJadeja' target='_blank' className='align-center'>
         <img src={gitHub} className='w-auto h-8 ml-2 mt-10' />
