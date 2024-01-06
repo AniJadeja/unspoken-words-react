@@ -8,6 +8,9 @@ import Footer from '../Components/Footer/Footer';
 import { useNavigate } from 'react-router-dom'
 import ReactDOM from 'react-dom';
 import { getCurrentPageData} from '../firebase/manageRealtimeDatabase.mjs';
+import gitHubMark from '../assets/social-media-logo-marks/git_hub_logo_mark.svg';
+import linkedInMark from '../assets/social-media-logo-marks/linked_in_logo_mark.svg';
+import instagramMark from '../assets/social-media-logo-marks/instagram_logo_mark.svg';
 
 
 
@@ -120,8 +123,22 @@ const Home = () => {
                   
                   </p>
                 <DottedDiv className="align-center" height={dottedDivisionHeight} width={dottedDivisionWidth } />
+                <div className='grid grid-cols-1 lg:grid-cols-2'>
+                
                 <div className='sm:-mt-4 sm2:mt-0'>
                 <ButtonPrimary text="Know Me More" path="aboutme" variant="textBordered" border={false}/>
+                </div>
+                <div className='flex justify-center lg:justify-end text-xs sm:text-base text-[var(--color-primary-white)] pb-0 pt-6'>
+                  <a href="https://www.github.com/AniJadeja" target="_blank">
+                    <img src={gitHubMark} className="h-8 mb-0 mt-auto" />
+                  </a>
+                  <a href="https://www.instagram.com/_the_pen_of_dreams_/" target="_blank">
+                    <img src={instagramMark} className="h-8 ml-5 mb-0 mt-auto" />
+                  </a>
+                  <a href="https://www.linkedin.com/in/anijadeja/" target="_blank">
+                    <img src={linkedInMark} className="h-8 ml-5 mb-0 mt-auto" />
+                  </a>
+                </div>
                 </div>
               </div>
             </div>
