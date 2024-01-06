@@ -114,6 +114,9 @@ const Avocations = () => {
   return (
     <AnimatedPage>
       <div className='text-white -pb-12'>
+
+      <p className='w-2 fixed lg:hidden bottom-32 right-3.5 opacity-60 text-center text-xs text-[var(--color-primary-white)]'>A v o c a t i o n s</p>
+
         <article id='introTextArticle' className='mt-8 lg:mt-16 px-10 lg:px-20 font-inter tracking-[2px] text-justify mb-12'>
           <p id='introText' className='text-xs sm:text-sm' >
             {

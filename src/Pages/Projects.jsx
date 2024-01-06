@@ -6,6 +6,7 @@ import { getCurrentPageData } from '../firebase/manageRealtimeDatabase.mjs'
 import ButtonPrimary from '../Components/ButtonPrimary/ButtonPrimary';
 import Footer from '../Components/Footer/Footer';
 import ScrollButton from '../Components/ScrollButton/ScrollButton';
+import gitHub from '../assets/github_logo.svg'
 
 const Projects = () => {
   const navigate = useNavigate();
@@ -34,6 +35,13 @@ const Projects = () => {
           const jsonProject = JSON.parse(stringProject);
           return (<ProjectRow project={jsonProject} />)
         })}
+        <div className='mb-10 lg:mb-20 px-10'>
+        <p className=' text-xs sm:text-base text-[var(--color-primary-white)]  tracking-[4px] align-center'>That is not all. Please checkout my git hub profile for more repositories.</p>
+        <a href='https://www.github.com/AniJadeja' target='_blank' className='align-center'>
+        <img src={gitHub} className='w-auto h-8 ml-2 mt-10' />
+        </a>
+          </div>
+    
         <div className='flex justify-center text-xs sm:text-base text-[var(--color-primary-white)] mb-10 lg:mb-20'>
           <ButtonPrimary text="My Avocations" path="avocations" variant="textBordered" border={true} />
         </div>

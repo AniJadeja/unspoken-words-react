@@ -136,14 +136,19 @@ const Contact = () => {
 
       if (availableWidth.current < 359) {
         setDottedDivisionHeight(100);
+        console.log("width less than 359 : "+imageHeight.current);
       } else if (availableWidth.current < 560) {
-        imageHeight.current = (availableHeight.current * 60) / 100;
+        imageHeight.current = (availableHeight.current * 40) / 100;
+        console.log("width less than 560 : "+imageHeight.current);
       } else if (availableWidth.current < 768) {
         imageHeight.current = (availableHeight.current * 50) / 100;
+        console.log("width less than 768 : "+imageHeight.current);
       } else if (availableWidth.current < 1024) {
         imageHeight.current = (availableHeight.current * 60) / 100;
+        console.log("width less than 1024 : "+imageHeight.current);
       } else {
         imageHeight.current = (availableHeight.current * 70) / 100;
+        console.log("width greater than 1024 : "+imageHeight.current);
       }
 
       setSectionHeight(newSectionHeight);
@@ -160,7 +165,7 @@ const Contact = () => {
         setResumeFileUrl(data.resumeFileUrl);
       })
       .catch(() => navigate('/error'));
-  }, []);
+  }, [imageHeight.current]);
 
   const handleDownload = async () => {
     try {
@@ -183,7 +188,7 @@ const Contact = () => {
     <AnimatedPage>
       <section id='homePage' style={{ minHeight: sectionHeight }}>
         <p className='w-2 fixed lg:hidden bottom-32 right-3.5 opacity-60 text-center text-xs text-[var(--color-primary-white)]'>
-          Contact
+          C o n t a c t
         </p>
         <article id='article' className='pt-14' style={{ minHeight: articleHeight }}>
           <div className={'mx-5 grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-[60%_40%] gap-4'}>
@@ -196,7 +201,7 @@ const Contact = () => {
               </p> 
             </div>
             <div className={(availableWidth.current < 1024) ?
-              'text-[var(--color-primary-white)] p-2 mt-8 mb-8'
+              'text-[var(--color-primary-white)] p-2 mb-8'
               : ` text-[var(--color-primary-white)] p-2 align-center w-[95%]`}
               id='rightArticle'
               style={{ height: (availableWidth.current < 1024) ? "fit-content" : subArticleHeight, minHeight: (availableWidth.current < 1024) ? "fit-content" : subArticleHeight }}>
