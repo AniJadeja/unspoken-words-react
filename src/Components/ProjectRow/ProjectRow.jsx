@@ -57,11 +57,12 @@ const ProjectRow = ({ project }) => {
             </div>
           </div>
         </div>
+        
         <div className='secondColumnWrapper'>
           <div
           ><p className='font-reef text-[var(--color-primary-white)] lg:text-xl tracking-[4px] sm:text-lg xl:text-2xl text-left min-w-fit mt-10 lg:mt-0'>Description</p></div>
           <div className='flex items-center space-x-3 mt-2'>
-            <p className='text-yellow-500'>Github:</p>
+          <p className='text-[var(--color-primary-accent)] tracking-[3px]'>Github:</p>
             {project.github.map((github) => (
               <div key={github.name}>
                 <a href={github.url} target='_blank' rel='noopener noreferrer' className='align-center hover:underline transition duration-500 ease-in-out'>
