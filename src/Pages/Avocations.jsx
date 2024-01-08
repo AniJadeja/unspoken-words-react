@@ -187,7 +187,7 @@ const Avocations = () => {
           <div className="w-full max-w-full flex-col flex lg:flex-row">
           {avocationsData.animeImage ? <img src={avocationsData.animeImage.src} alt={avocationsData.animeImage.alt} className="mt-12 lg:w-3/4  " style={isAnimeImageHovered ? animeImageHoverStyle : animeImageStyle} onMouseEnter={handleAnimeImageHover} onMouseLeave={handleAnimeImageLeave} /> : null}
           <div className="m-auto mt-8 mb-8 lg:m-auto">
-          <ButtonPrimary text='Resume' link='/resume' variant="textBordered" border={true}/>
+          <ButtonPrimary text='Contact' path='contact' variant="textBordered" border={true}/>
           </div>
           </div>
         </article>
