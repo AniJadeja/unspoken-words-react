@@ -6,11 +6,12 @@ import { projectName } from "../../index";
 import { BurgerClose }
   from "react-burger-icons";
 import './NavStyle.css';
+import './NavButtonAnimation.css'
 import { setCurrentPage } from "../../utils/CommonPrefs.mjs";
 
 const NavigationBar = () => {
 
-
+  
   const [isClosed, setIsClosed] = useState(false);
   const closeMobileMenu = () => setIsClosed(false); 
 
@@ -99,7 +100,7 @@ const NavigationBar = () => {
       <nav id="mobileNavigation" className=" mx-8 flex lg:hidden  justify-center">
         {/*Menu Control Button*/}
 
-        <div className="fixed right-0 bottom-11 h-12 w-12 bg-[var(--color-menu-gray)] rounded-s-xl z-20">
+        <div className="fixed right-0 bottom-11 h-12 w-12 bg-[var(--color-menu-gray)] rounded-s-xl z-20 mobile-nav-button">
           <div className="flex justify-center items-center h-full" onClick={() => {
             setIsClosed(!isClosed)
           }}>
