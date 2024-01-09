@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.mobile-nav-button {
+ 
+  animation: navButtonAnim 0.7s ease-in-out;
+}
+
+@keyframes navButtonAnim {
+
+  0% {
+    transform: translateX(64px);
+  }
+
+  50% {
+    transform: translateX(-30px);
+  }
+
+  70% {
+    transform: translateX(15px);
+  }
+
+  80% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
