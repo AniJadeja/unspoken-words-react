@@ -7,7 +7,7 @@
 
 # testing
 /coverage
-
+/src/Pages/HomeNew.jsx
 # production
 /build
 
