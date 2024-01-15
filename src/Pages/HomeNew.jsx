@@ -31,6 +31,7 @@ const Home = () => {
   const handleResize = () => {
     setIsMobile(window.innerWidth < 768)
     setIsSmallMobile(window.innerHeight < 680)
+    console.log(document.getElementById('displayPicture').clientWidth);
   }
 
   const avialableWidth = useRef(getAvailableWidth());
@@ -114,12 +115,13 @@ const Home = () => {
         >
           <article id='displayPictureArticle'
             style={{
-              height: isMobile ? 'auto' : '70%',
+              height: isMobile ? '70%' : 'auto',
               width: '100%',
               maxHeight: `inherit`
             }}
             className=' lg:relative absolute top-0 align-center order-1 lg:order-2'>
             <img
+              id='displayPicture'
               src={displayPicture}
               style={{
                 objectFit: "contain",
