@@ -1,17 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import { availableWidth, getAvailableWidth } from "..";
 import DottedDiv from "../Components/DottedDiv/DottedDiv";
 import ButtonPrimary from "../Components/ButtonPrimary/ButtonPrimary";
 import AnimatedPage from "../Components/Animated/AnimatedPage";
 import Typed from "react-typed";
 import Footer from "../Components/Footer/Footer";
 import { useNavigate } from "react-router-dom";
-import ReactDOM from "react-dom";
 import { getCurrentPageData } from "../firebase/manageRealtimeDatabase.mjs";
 import gitHubMark from "../assets/social-media-logo-marks/git_hub_logo_mark.svg";
 import linkedInMark from "../assets/social-media-logo-marks/linked_in_logo_mark.svg";
 import instagramMark from "../assets/social-media-logo-marks/instagram_logo_mark.svg";
-import { get, set } from "firebase/database";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -21,8 +18,6 @@ const Home = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isSmallMobile, setIsSmallMobile] = useState(false);
   const typedStrings = useRef(["Aniruddhsinh Jadeja", "   A Web Developer"]);
-
-  const avialableWidth = useRef(getAvailableWidth());
   const handleResize = () => {
     setIsMobile(window.innerWidth < 768);
     setIsSmallMobile(window.innerHeight < 680);
@@ -39,20 +34,8 @@ const Home = () => {
   };
 
 
-  const avialableHeight = useRef(window.innerHeight);
-
-  const calculateHeights = () => {
-    const navBar = document.getElementById("middleNavigationBar"); 
-    const footer = document.getElementById("footer");
-    const introText = document.getElementById("introText");
-    handleResize();
-
-    if (navBar && footer && introText) {
-      
-    }
-  };
-
   useEffect(() => {
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
