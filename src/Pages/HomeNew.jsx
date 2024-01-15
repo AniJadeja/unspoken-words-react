@@ -14,17 +14,15 @@ import instagramMark from "../assets/social-media-logo-marks/instagram_logo_mark
 const Home = () => {
   const navigate = useNavigate();
 
-  const [dottedDivisionWidth, setDottedDivisionWidth] = useState("70"); // Initialize isMobileViewActive as true
+  const [dottedDivisionWidth, setDottedDivisionWidth] = useState("70"); 
   const [displayPicture, setDisplayPicture] = useState("");
   const [isMobile, setIsMobile] = useState(true);
-  const [isSmallMobile, setIsSmallMobile] = useState(true);
-  const typedStrings = useRef(["Aniruddhsinh Jadeja", "   A Web Developer"]);
+  const typedStrings = useRef(["Aniruddhsinh Jadeja", "A Web Developer"]);
 
 
 
   const handleResize = () => {
     setIsMobile(window.outerWidth < 768);
-    setIsSmallMobile(window.innerHeight < 680);
     try {
       let introArticle = document.getElementById("dottedDivContainer");
       setDottedDivisionWidth(introArticle.offsetWidth);
@@ -34,17 +32,14 @@ const Home = () => {
     } 
   };
 
-
-
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [isMobile]);
+  }, []);
 
   useEffect(() => {
-    console.log("Handling resize on load");
     handleResize();
 
     getCurrentPageData()
@@ -62,12 +57,8 @@ const Home = () => {
         id="homePage"
         style={{
           minHeight:'550px',
-          height: isMobile
-            ? isSmallMobile
-              ? "70svh"
-              : "100svh"
-            : `calc(100svh - 194px)`,
-          maxHeight: isSmallMobile ? "150svh" : `calc(100svh - 194px)`,
+          height:  `calc(100svh - 194px)`,
+          maxHeight:  `calc(100svh - 194px)`,
         }}
         className={`px-10 lg:px-0  text-[--color-primary-white] align-center`}
       >
