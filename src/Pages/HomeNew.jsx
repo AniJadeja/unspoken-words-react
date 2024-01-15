@@ -1,71 +1,41 @@
 import React, { useEffect, useRef, useState } from "react";
-import { availableWidth, getAvailableWidth } from "..";
 import DottedDiv from "../Components/DottedDiv/DottedDiv";
 import ButtonPrimary from "../Components/ButtonPrimary/ButtonPrimary";
 import AnimatedPage from "../Components/Animated/AnimatedPage";
 import Typed from "react-typed";
 import Footer from "../Components/Footer/Footer";
 import { useNavigate } from "react-router-dom";
-import ReactDOM from "react-dom";
 import { getCurrentPageData } from "../firebase/manageRealtimeDatabase.mjs";
 import gitHubMark from "../assets/social-media-logo-marks/git_hub_logo_mark.svg";
 import linkedInMark from "../assets/social-media-logo-marks/linked_in_logo_mark.svg";
 import instagramMark from "../assets/social-media-logo-marks/instagram_logo_mark.svg";
-import { get } from "firebase/database";
 
 const Home = () => {
   const navigate = useNavigate();
 
   const [dottedDivisionWidth, setDottedDivisionWidth] = useState("270"); // Initialize isMobileViewActive as true
-  const [dottedDivisionHeight, setDottedDivisionHeight] = useState(130); // Initialize isMobileViewActive as true
   const [displayPicture, setDisplayPicture] = useState("");
   const [isMobile, setIsMobile] = useState(false);
   const [isSmallMobile, setIsSmallMobile] = useState(false);
   const typedStrings = useRef(["Aniruddhsinh Jadeja", "   A Web Developer"]);
-
   const handleResize = () => {
     setIsMobile(window.innerWidth < 768);
     setIsSmallMobile(window.innerHeight < 680);
-    // console.log(document.getElementById('displayPicture').clientWidth);
-  };
 
-  const avialableWidth = useRef(getAvailableWidth());
-  const avialableHeight = useRef(window.innerHeight);
-
-  const calculateHeights = () => {
-    const navBar = document.getElementById("middleNavigationBar"); //  Navigationbar's ID
-    const footer = document.getElementById("footer");
-    const introText = document.getElementById("introText");
-    handleResize();
-
-    // const fullHeight = window.innerHeight;
-    // console.log('full height:', fullHeight);
-    // const navBarHeight = getComputedStyle(navBar).height;
-    // console.log('navBar height:', navBarHeight);
-    // const footerHeight = getComputedStyle(footer).height;
-    // console.log('footer height:', footerHeight);
-    // const sectionHeight = getComputedStyle(document.getElementById('homePage')).height;
-    // console.log('section height:', sectionHeight);
-    const articleHeight = getComputedStyle(
-      document.getElementById("articlesWrapper")
-    ).height;
-    console.log("article height:", articleHeight);
-
-    if (navBar && footer && introText) {
-      if (avialableWidth.current < 359) {
-        setDottedDivisionHeight(100);
-        setDottedDivisionWidth((avialableWidth.current * 78) / 100);
-      } else if (availableWidth.current < 560) {
-      } else if (avialableWidth.current < 768) {
-        setDottedDivisionWidth((avialableWidth.current * 80) / 100);
-      } else {
-        setDottedDivisionWidth((avialableWidth.current * 40) / 100);
-        typedStrings.current = ["Aniruddhsinh Jadeja", "A Web Developer"];
+    try {
+      let introArticle = document.getElementById("introArticle");
+      if (introArticle) {
+        let dottedWidth = isMobile ? introArticle.offsetWidth : introArticle.offsetWidth / 1.4;
+        setDottedDivisionWidth(dottedWidth);
       }
+    } catch (error) {
+      console.log(error);
     }
   };
 
+
   useEffect(() => {
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -88,6 +58,7 @@ const Home = () => {
       <section
         id="homePage"
         style={{
+          minHeight:'550px',
           height: isMobile
             ? isSmallMobile
               ? "70svh"
@@ -160,7 +131,7 @@ const Home = () => {
                 />
               </p>
 
-              <DottedDiv className="align-center" height={120} width={320} />
+              <DottedDiv className="align-center" height={isMobile ? isSmallMobile ? 70 : 120 : 120} width={dottedDivisionWidth} />
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="sm:-mt-4 sm2:mt-0">
                   <ButtonPrimary
@@ -197,7 +168,7 @@ const Home = () => {
         </div>
       </section>
 
-      <div className="fixed lg:relative right-0 left-0 bottom-0">
+      <div>
         <Footer />
       </div>
     </AnimatedPage>
