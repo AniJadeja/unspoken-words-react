@@ -26,30 +26,16 @@ const Home = () => {
   const handleResize = () => {
     setIsMobile(window.innerWidth < 768);
     setIsSmallMobile(window.innerHeight < 680);
-    // console.log(document.getElementById('displayPicture').clientWidth);
   };
 
   const avialableWidth = useRef(getAvailableWidth());
   const avialableHeight = useRef(window.innerHeight);
 
   const calculateHeights = () => {
-    const navBar = document.getElementById("middleNavigationBar"); //  Navigationbar's ID
+    const navBar = document.getElementById("middleNavigationBar"); 
     const footer = document.getElementById("footer");
     const introText = document.getElementById("introText");
     handleResize();
-
-    // const fullHeight = window.innerHeight;
-    // console.log('full height:', fullHeight);
-    // const navBarHeight = getComputedStyle(navBar).height;
-    // console.log('navBar height:', navBarHeight);
-    // const footerHeight = getComputedStyle(footer).height;
-    // console.log('footer height:', footerHeight);
-    // const sectionHeight = getComputedStyle(document.getElementById('homePage')).height;
-    // console.log('section height:', sectionHeight);
-    const articleHeight = getComputedStyle(
-      document.getElementById("articlesWrapper")
-    ).height;
-    console.log("article height:", articleHeight);
 
     if (navBar && footer && introText) {
       if (avialableWidth.current < 359) {
