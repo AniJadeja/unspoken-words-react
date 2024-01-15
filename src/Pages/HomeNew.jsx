@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+
 import DottedDiv from "../Components/DottedDiv/DottedDiv";
 import ButtonPrimary from "../Components/ButtonPrimary/ButtonPrimary";
 import AnimatedPage from "../Components/Animated/AnimatedPage";
@@ -13,29 +14,29 @@ import instagramMark from "../assets/social-media-logo-marks/instagram_logo_mark
 const Home = () => {
   const navigate = useNavigate();
 
-  const [dottedDivisionWidth, setDottedDivisionWidth] = useState("270"); // Initialize isMobileViewActive as true
+  const [dottedDivisionWidth, setDottedDivisionWidth] = useState("70"); // Initialize isMobileViewActive as true
   const [displayPicture, setDisplayPicture] = useState("");
-  const [isMobile, setIsMobile] = useState(false);
-  const [isSmallMobile, setIsSmallMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
+  const [isSmallMobile, setIsSmallMobile] = useState(true);
   const typedStrings = useRef(["Aniruddhsinh Jadeja", "   A Web Developer"]);
-  const handleResize = () => {
-    setIsMobile(window.innerWidth < 768);
-    setIsSmallMobile(window.innerHeight < 680);
 
+
+
+  const handleResize = () => {
+    setIsMobile(window.outerWidth < 768);
+    setIsSmallMobile(window.innerHeight < 680);
     try {
-      let introArticle = document.getElementById("introArticle");
-      if (introArticle) {
-        let dottedWidth = isMobile ? introArticle.offsetWidth : introArticle.offsetWidth / 1.4;
-        setDottedDivisionWidth(dottedWidth);
-      }
-    } catch (error) {
-      console.log(error);
+      let introArticle = document.getElementById("dottedDivContainer");
+      setDottedDivisionWidth(introArticle.offsetWidth);
     }
+    catch (error) {
+      console.log("Error in setting dottedDivisionWidth");
+    } 
   };
 
 
+
   useEffect(() => {
-    handleResize();
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -43,7 +44,9 @@ const Home = () => {
   }, [isMobile]);
 
   useEffect(() => {
-    calculateHeights();
+    console.log("Handling resize on load");
+    handleResize();
+
     getCurrentPageData()
       .then((data) => {
         setDisplayPicture(data.displayPictureUrl);
@@ -113,7 +116,7 @@ const Home = () => {
             }}
             className="lg:relative absolute bottom-0 order-2 lg:order-1 align-center"
           >
-            <div className=" block">
+            <div id="dottedDivContainer" className="w-11/12 lg:w-3/4 block">
               <p className="font-inter mb-4 text-[var(--color-primary-white)] sm:-mt-4 sm3:mt-0 text-xs sm2:text-lg lg:text-lg xl:text-xl text-center lg:text-left">
                 Hi I am,
               </p>
@@ -131,7 +134,15 @@ const Home = () => {
                 />
               </p>
 
-              <DottedDiv className="align-center" height={isMobile ? isSmallMobile ? 70 : 120 : 120} width={dottedDivisionWidth} />
+         
+              <DottedDiv className="align-center" 
+              height={
+                isMobile 
+                ? ( 95 )
+                : (150)} 
+                width={dottedDivisionWidth} />
+       
+              
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="sm:-mt-4 sm2:mt-0">
                   <ButtonPrimary
