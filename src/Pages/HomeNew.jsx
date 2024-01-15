@@ -88,6 +88,7 @@ const Home = () => {
       <section
         id="homePage"
         style={{
+          minHeight:'550px',
           height: isMobile
             ? isSmallMobile
               ? "70svh"
@@ -160,7 +161,7 @@ const Home = () => {
                 />
               </p>
 
-              <DottedDiv className="align-center" height={120} width={320} />
+              <DottedDiv className="align-center" height={isMobile ? isSmallMobile ? 70 : 120 : 120} width={320} />
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="sm:-mt-4 sm2:mt-0">
                   <ButtonPrimary
@@ -197,7 +198,7 @@ const Home = () => {
         </div>
       </section>
 
-      <div className="fixed lg:relative right-0 left-0 bottom-0">
+      <div>
         <Footer />
       </div>
     </AnimatedPage>
