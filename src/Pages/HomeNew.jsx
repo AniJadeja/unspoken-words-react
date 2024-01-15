@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+
 import DottedDiv from "../Components/DottedDiv/DottedDiv";
 import ButtonPrimary from "../Components/ButtonPrimary/ButtonPrimary";
 import AnimatedPage from "../Components/Animated/AnimatedPage";
@@ -13,37 +14,34 @@ import instagramMark from "../assets/social-media-logo-marks/instagram_logo_mark
 const Home = () => {
   const navigate = useNavigate();
 
-  const [dottedDivisionWidth, setDottedDivisionWidth] = useState("270"); // Initialize isMobileViewActive as true
+  const [dottedDivisionWidth, setDottedDivisionWidth] = useState("70"); 
   const [displayPicture, setDisplayPicture] = useState("");
-  const [isMobile, setIsMobile] = useState(false);
-  const [isSmallMobile, setIsSmallMobile] = useState(false);
-  const typedStrings = useRef(["Aniruddhsinh Jadeja", "   A Web Developer"]);
-  const handleResize = () => {
-    setIsMobile(window.innerWidth < 768);
-    setIsSmallMobile(window.innerHeight < 680);
+  const [isMobile, setIsMobile] = useState(true);
+  const typedStrings = useRef(["Aniruddhsinh Jadeja", "A Web Developer"]);
 
+
+
+  const handleResize = () => {
+    setIsMobile(window.outerWidth < 768);
     try {
-      let introArticle = document.getElementById("introArticle");
-      if (introArticle) {
-        let dottedWidth = isMobile ? introArticle.offsetWidth : introArticle.offsetWidth / 1.4;
-        setDottedDivisionWidth(dottedWidth);
-      }
-    } catch (error) {
-      console.log(error);
+      let introArticle = document.getElementById("dottedDivContainer");
+      setDottedDivisionWidth(introArticle.offsetWidth);
     }
+    catch (error) {
+      console.log("Error in setting dottedDivisionWidth");
+    } 
   };
 
-
   useEffect(() => {
-    handleResize();
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [isMobile]);
+  }, []);
 
   useEffect(() => {
-    calculateHeights();
+    handleResize();
+
     getCurrentPageData()
       .then((data) => {
         setDisplayPicture(data.displayPictureUrl);
@@ -59,12 +57,8 @@ const Home = () => {
         id="homePage"
         style={{
           minHeight:'550px',
-          height: isMobile
-            ? isSmallMobile
-              ? "70svh"
-              : "100svh"
-            : `calc(100svh - 194px)`,
-          maxHeight: isSmallMobile ? "150svh" : `calc(100svh - 194px)`,
+          height:  `calc(100svh - 194px)`,
+          maxHeight:  `calc(100svh - 194px)`,
         }}
         className={`px-10 lg:px-0  text-[--color-primary-white] align-center`}
       >
@@ -113,7 +107,7 @@ const Home = () => {
             }}
             className="lg:relative absolute bottom-0 order-2 lg:order-1 align-center"
           >
-            <div className=" block">
+            <div id="dottedDivContainer" className="w-11/12 lg:w-3/4 block">
               <p className="font-inter mb-4 text-[var(--color-primary-white)] sm:-mt-4 sm3:mt-0 text-xs sm2:text-lg lg:text-lg xl:text-xl text-center lg:text-left">
                 Hi I am,
               </p>
@@ -131,7 +125,15 @@ const Home = () => {
                 />
               </p>
 
-              <DottedDiv className="align-center" height={isMobile ? isSmallMobile ? 70 : 120 : 120} width={dottedDivisionWidth} />
+         
+              <DottedDiv className="align-center" 
+              height={
+                isMobile 
+                ? ( 95 )
+                : (150)} 
+                width={dottedDivisionWidth} />
+       
+              
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="sm:-mt-4 sm2:mt-0">
                   <ButtonPrimary
