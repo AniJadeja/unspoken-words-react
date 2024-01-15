@@ -11,24 +11,34 @@ import { getCurrentPageData } from "../firebase/manageRealtimeDatabase.mjs";
 import gitHubMark from "../assets/social-media-logo-marks/git_hub_logo_mark.svg";
 import linkedInMark from "../assets/social-media-logo-marks/linked_in_logo_mark.svg";
 import instagramMark from "../assets/social-media-logo-marks/instagram_logo_mark.svg";
-import { get } from "firebase/database";
+import { get, set } from "firebase/database";
 
 const Home = () => {
   const navigate = useNavigate();
 
   const [dottedDivisionWidth, setDottedDivisionWidth] = useState("270"); // Initialize isMobileViewActive as true
-  const [dottedDivisionHeight, setDottedDivisionHeight] = useState(130); // Initialize isMobileViewActive as true
   const [displayPicture, setDisplayPicture] = useState("");
   const [isMobile, setIsMobile] = useState(false);
   const [isSmallMobile, setIsSmallMobile] = useState(false);
   const typedStrings = useRef(["Aniruddhsinh Jadeja", "   A Web Developer"]);
 
+  const avialableWidth = useRef(getAvailableWidth());
   const handleResize = () => {
     setIsMobile(window.innerWidth < 768);
     setIsSmallMobile(window.innerHeight < 680);
+
+    try {
+      let introArticle = document.getElementById("introArticle");
+      if (introArticle) {
+        let dottedWidth = isMobile ? introArticle.offsetWidth : introArticle.offsetWidth / 1.4;
+        setDottedDivisionWidth(dottedWidth);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const avialableWidth = useRef(getAvailableWidth());
+
   const avialableHeight = useRef(window.innerHeight);
 
   const calculateHeights = () => {
@@ -38,16 +48,7 @@ const Home = () => {
     handleResize();
 
     if (navBar && footer && introText) {
-      if (avialableWidth.current < 359) {
-        setDottedDivisionHeight(100);
-        setDottedDivisionWidth((avialableWidth.current * 78) / 100);
-      } else if (availableWidth.current < 560) {
-      } else if (avialableWidth.current < 768) {
-        setDottedDivisionWidth((avialableWidth.current * 80) / 100);
-      } else {
-        setDottedDivisionWidth((avialableWidth.current * 40) / 100);
-        typedStrings.current = ["Aniruddhsinh Jadeja", "A Web Developer"];
-      }
+      
     }
   };
 
@@ -147,7 +148,7 @@ const Home = () => {
                 />
               </p>
 
-              <DottedDiv className="align-center" height={isMobile ? isSmallMobile ? 70 : 120 : 120} width={320} />
+              <DottedDiv className="align-center" height={isMobile ? isSmallMobile ? 70 : 120 : 120} width={dottedDivisionWidth} />
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="sm:-mt-4 sm2:mt-0">
                   <ButtonPrimary
