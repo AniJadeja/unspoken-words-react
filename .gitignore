@@ -9,6 +9,11 @@
 /.firebase
 /.firebase-debug.log
 
+/firebase.json
+/.firebaserc
+/.firebase
+/.firebase-debug.log
+
 
 # testing
 /coverage
