@@ -24,7 +24,7 @@ const Home = () => {
   const handleResize = () => {
     setIsMobile(window.outerWidth < 768);
     try {
-      let introArticle = document.getElementById("dottedDivContainer");
+      let introArticle = document.getElementById("dottedDivRefContainer");
       setDottedDivisionWidth(introArticle.offsetWidth);
     }
     catch (error) {
@@ -107,7 +107,7 @@ const Home = () => {
             }}
             className="lg:relative absolute bottom-0 order-2 lg:order-1 align-center"
           >
-            <div id="dottedDivContainer" className="w-11/12 lg:w-3/4 block">
+            <div id="dottedDivRefContainer" className="w-11/12 lg:w-3/4 block">
               <p className="font-inter mb-4 text-[var(--color-primary-white)] sm:-mt-4 sm3:mt-0 text-xs sm2:text-lg lg:text-lg xl:text-xl text-center lg:text-left">
                 Hi I am,
               </p>

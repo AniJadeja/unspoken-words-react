@@ -21,27 +21,38 @@ import { useNavigate } from 'react-router-dom';
 const AboutMe = () => {
   const navigate = useNavigate();
 
-  const [dottedDivWidth, setDottedDivWidth] = useState(250);
+  const [dottedDivWidth, setDottedDivisionWidth] = useState(250);
   const [dottedDivHeight, setDottedDivHeight] = useState(100);
   const [aboutMeModel, setAboutMeModel] = useState();
+  const [isMobile, setIsMobile] = useState(true);
+
+
+  const handleResize = () => {
+    setIsMobile(window.outerWidth < 768);
+    try {
+      console.log("Setting dottedDivisionWidth");
+      let introArticle = document.getElementById("introText");
+      setDottedDivisionWidth(introArticle.offsetWidth);
+      setDottedDivHeight(introArticle.offsetHeight + 5);
+    }
+    catch (error) {
+      console.log("Error in setting dottedDivisionWidth");
+    } 
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [window.outerWidth]);
+
 
 
 
   useEffect(() => {
-    const introText = document.getElementById('introText');
-    if (introText) {
-      if (availableWidth > 768) {
-        setDottedDivWidth((introText.clientWidth));
-        setDottedDivHeight(introText.clientHeight);
-      }
-      else {
-        setDottedDivWidth(introText.clientWidth);
-
-      }
-    }
-    else {
-      console.log("introText is unavailable")
-    }
+    handleResize();
+ 
     getCurrentPageData().then((data) => {
       setAboutMeModel(new AboutMeModel(data));
     }).catch((error) => {
@@ -57,8 +68,8 @@ const AboutMe = () => {
 
         <p className='w-2 fixed lg:hidden bottom-32 right-3.5 opacity-60 text-center text-xs text-[var(--color-primary-white)]'>A b o u t &nbsp; M e</p>
 
-        <article id='introTextArticle' className='grid grid-cols-1 gap-5 lg:grid-cols-2 font-inter tracking-[2px] text-justify'>
-          <p id='introText' className='text-xs sm:text-sm' >
+        <article id='introTextArticle' className='grid grid-cols-1 gap-5 lg:grid-cols-2 font-inter tracking-[2px] text-justify '>
+          <p id='introText' className='text-xs sm:text-sm h-fit' >
             {
               aboutMeModel ? aboutMeModel.introParagraph : null
             }
@@ -68,7 +79,13 @@ const AboutMe = () => {
 
           <div className="align-center">
 
-            <DottedDiv id="dotDiv" height={dottedDivHeight} width={dottedDivWidth} />
+          <DottedDiv className="align-center" 
+              height={
+                isMobile 
+                ? ( 95 )
+                : dottedDivHeight} 
+                width={dottedDivWidth} />
+       
 
           </div>
 
