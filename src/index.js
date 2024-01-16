@@ -16,7 +16,7 @@ import Projects from './Pages/Projects';
 import NoPage from './Pages/NoPage';
 import NavigationBar from "./Components/NavigationBar/NavigationBar";
 import ReactDOM from 'react-dom/client';
-import Home from "./Pages/HomeNew";
+import Home from "./Pages/Home";
 import Contact from "./Pages/Contact";
 
 // Define constants for the project name and available screen dimensions
