@@ -21,7 +21,7 @@ import { useNavigate } from 'react-router-dom';
 const AboutMe = () => {
   const navigate = useNavigate();
 
-  const [dottedDivWidth, setDottedDivisionWidth] = useState(250);
+  const [dottedDivWidth, setDottedDivWidth] = useState(250);
   const [dottedDivHeight, setDottedDivHeight] = useState(100);
   const [aboutMeModel, setAboutMeModel] = useState();
   const [isMobile, setIsMobile] = useState(false);
