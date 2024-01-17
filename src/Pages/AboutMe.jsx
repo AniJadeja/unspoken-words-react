@@ -21,19 +21,18 @@ import { useNavigate } from 'react-router-dom';
 const AboutMe = () => {
   const navigate = useNavigate();
 
-  const [dottedDivWidth, setDottedDivisionWidth] = useState(250);
+  const [dottedDivWidth, setDottedDivWidth] = useState(250);
   const [dottedDivHeight, setDottedDivHeight] = useState(100);
   const [aboutMeModel, setAboutMeModel] = useState();
-  const [isMobile, setIsMobile] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
 
   const handleResize = () => {
     setIsMobile(window.outerWidth < 768);
     try {
-      console.log("Setting dottedDivisionWidth");
       let introArticle = document.getElementById("introText");
-      setDottedDivisionWidth(introArticle.offsetWidth);
-      setDottedDivHeight(introArticle.offsetHeight + 5);
+      setDottedDivWidth(introArticle.offsetWidth);
+      setDottedDivHeight(introArticle.offsetHeight);
     }
     catch (error) {
       console.log("Error in setting dottedDivisionWidth");
@@ -41,16 +40,8 @@ const AboutMe = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [window.outerWidth]);
+    setIsMobile(window.outerWidth < 768);
 
-
-
-
-  useEffect(() => {
     handleResize();
  
     getCurrentPageData().then((data) => {
@@ -59,8 +50,16 @@ const AboutMe = () => {
       navigate('/error');
     });
 
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
-  }, [])
+  useEffect(() => {
+    handleResize();
+  }, [aboutMeModel]);
+
 
   return (
     <AnimatedPage>
@@ -106,7 +105,7 @@ const AboutMe = () => {
                     autoplay
                     loop
                     mode="normal"
-                    src={android}
+                    src={android}  //variable
                     style={{ height: '40px', width: 'auto' }}
                   >
                   </dotlottie-player>
@@ -119,7 +118,8 @@ const AboutMe = () => {
                   <ul className='list-disc ml-6'>
                     {
                       aboutMeModel ? aboutMeModel.skills.androidSkills.map((skill) => {
-                        return <li>{skill}</li>
+                        return <li>{skill // variable
+                      }</li>
                       }
                       ) : null
                     }
