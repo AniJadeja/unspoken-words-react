@@ -49,7 +49,8 @@ const ScrollButton = () => {
 
 
     return (
-        <div className='hidden lg:fixed bottom-0 w-screen h-32 max-w-[var(--max-width)]'>
+
+        <div className='hidden lg:block  fixed bottom-0 w-screen h-0 max-w-[var(--max-width)]'>
             
         <button className={'p-4 absolute bottom-12 right-4 z-50 w-30 h-30 bg-[var(--color-primary-black)] rounded-full lg:flex justify-center items-center'}
             style={{
