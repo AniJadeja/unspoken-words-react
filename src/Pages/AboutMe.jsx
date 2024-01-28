@@ -24,32 +24,42 @@ const AboutMe = () => {
   const [dottedDivWidth, setDottedDivWidth] = useState(250);
   const [dottedDivHeight, setDottedDivHeight] = useState(100);
   const [aboutMeModel, setAboutMeModel] = useState();
+  const [isMobile, setIsMobile] = useState(false);
 
 
+  const handleResize = () => {
+    setIsMobile(window.outerWidth < 768);
+    try {
+      let introArticle = document.getElementById("introText");
+      setDottedDivWidth(introArticle.offsetWidth);
+      setDottedDivHeight(introArticle.offsetHeight);
+    }
+    catch (error) {
+      console.log("Error in setting dottedDivisionWidth");
+    } 
+  };
 
   useEffect(() => {
-    const introText = document.getElementById('introText');
-    if (introText) {
-      if (availableWidth > 768) {
-        setDottedDivWidth((introText.clientWidth));
-        setDottedDivHeight(introText.clientHeight);
-      }
-      else {
-        setDottedDivWidth(introText.clientWidth);
+    setIsMobile(window.outerWidth < 768);
 
-      }
-    }
-    else {
-      console.log("introText is unavailable")
-    }
+    handleResize();
+ 
     getCurrentPageData().then((data) => {
       setAboutMeModel(new AboutMeModel(data));
     }).catch((error) => {
       navigate('/error');
     });
 
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
-  }, [])
+  useEffect(() => {
+    handleResize();
+  }, [aboutMeModel]);
+
 
   return (
     <AnimatedPage>
@@ -57,8 +67,8 @@ const AboutMe = () => {
 
         <p className='w-2 fixed lg:hidden bottom-32 right-3.5 opacity-60 text-center text-xs text-[var(--color-primary-white)]'>A b o u t &nbsp; M e</p>
 
-        <article id='introTextArticle' className='grid grid-cols-1 gap-5 lg:grid-cols-2 font-inter tracking-[2px] text-justify'>
-          <p id='introText' className='text-xs sm:text-sm' >
+        <article id='introTextArticle' className='grid grid-cols-1 gap-5 lg:grid-cols-2 font-inter tracking-[2px] text-justify '>
+          <p id='introText' className='text-xs sm:text-sm h-fit' >
             {
               aboutMeModel ? aboutMeModel.introParagraph : null
             }
@@ -68,7 +78,13 @@ const AboutMe = () => {
 
           <div className="align-center">
 
-            <DottedDiv id="dotDiv" height={dottedDivHeight} width={dottedDivWidth} />
+          <DottedDiv className="align-center" 
+              height={
+                isMobile 
+                ? ( 95 )
+                : dottedDivHeight} 
+                width={dottedDivWidth} />
+       
 
           </div>
 
@@ -89,7 +105,7 @@ const AboutMe = () => {
                     autoplay
                     loop
                     mode="normal"
-                    src={android}
+                    src={android}  //variable
                     style={{ height: '40px', width: 'auto' }}
                   >
                   </dotlottie-player>
@@ -102,7 +118,8 @@ const AboutMe = () => {
                   <ul className='list-disc ml-6'>
                     {
                       aboutMeModel ? aboutMeModel.skills.androidSkills.map((skill) => {
-                        return <li>{skill}</li>
+                        return <li>{skill // variable
+                      }</li>
                       }
                       ) : null
                     }
